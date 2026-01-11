@@ -6,7 +6,6 @@
   <title>Fagerborg BK – Terminliste 2026</title>
   <meta name="description" content="Terminliste 2026 for Fagerborg BK – A-lag og B-lag. Kalender (ICS) integrasjon." />
 
-  <!-- Font (valgfritt, men gir “PL-ish” finish) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -18,16 +17,13 @@
       --card:#ffffff;
       --text:#0b1220;
       --muted:#667085;
-      --muted2:#98a2b3;
       --line:#e5e7eb;
       --shadow: 0 14px 40px rgba(2,6,23,.18);
       --shadow2: 0 10px 26px rgba(2,6,23,.14);
       --radius: 18px;
 
-      --brand:#16a34a;     /* Fagerborg-highlight */
+      --brand:#16a34a;
       --brand2:#22c55e;
-      --chip:#f2f4f7;
-      --chipText:#344054;
 
       --okBg:#ecfdf3;
       --okText:#067647;
@@ -63,7 +59,6 @@
       padding: 18px 14px 22px;
     }
 
-    /* Compact (iframe) header */
     .topbar{
       display:flex;
       align-items:flex-start;
@@ -349,7 +344,7 @@
       box-shadow: 0 10px 22px rgba(2,6,23,.08);
     }
     .btn:hover{ text-decoration:none; filter: brightness(.98) }
-    .btn .ic{opacity:.85}
+
     .note{
       padding: 0 14px 14px;
       color: var(--muted);
@@ -357,7 +352,6 @@
       line-height:1.35;
     }
 
-    /* Front view cards */
     .frontGrid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -428,6 +422,7 @@
       overflow:hidden;
       text-overflow:ellipsis;
     }
+
     .skeleton{
       background: linear-gradient(90deg, #f2f4f7, #e4e7ec, #f2f4f7);
       background-size: 200% 100%;
@@ -496,7 +491,10 @@
     for (const [k,v] of Object.entries(attrs)) {
       if (k === 'class') n.className = v;
       else if (k === 'html') n.innerHTML = v;
-      else if (k.startsWith('on') && typeof v === 'function') n.addEventListener(k.slice(2), v);
+      else if (k.startsWith('on') && typeof v === 'function') {
+        // FIX: event names must be lowercase (onClick -> "click")
+        n.addEventListener(k.slice(2).toLowerCase(), v);
+      }
       else if (v !== null && v !== undefined) n.setAttribute(k, v);
     }
     for (const c of children) {
@@ -509,7 +507,6 @@
   function fmtNo(dtIso) {
     try {
       const d = new Date(dtIso);
-      // no-NO / nb-NO – i praksis samme i de fleste nettlesere
       return d.toLocaleString('nb-NO', {
         weekday: 'short',
         year: 'numeric',
@@ -547,7 +544,6 @@
 
   function scoreText(m) {
     if (Number.isFinite(m.homeGoals) && Number.isFinite(m.awayGoals)) return `${m.homeGoals}\u2013${m.awayGoals}`;
-    if (isFinished(m)) return '–';
     return '–';
   }
 
@@ -573,23 +569,6 @@
     const list = el('div', { class: 'list' });
     for (let i=0;i<count;i++) list.appendChild(el('div', { class: 'skeleton' }));
     return list;
-  }
-
-  function makeIcsButtons(prefix) {
-    return el('div', { class: 'actions' }, [
-      el('a', { class: 'btn', href: `data/${prefix}.ics`, target: '_blank', rel: 'noopener' }, [
-        el('span', { class: 'ic' }, ['📅']),
-        'Legg til i kalender (ICS)'
-      ])
-    ]);
-  }
-
-  function makeIcsButtonsAll() {
-    return el('div', { class: 'actions' }, [
-      el('a', { class: 'btn', href: 'data/a.ics', target: '_blank', rel: 'noopener' }, [el('span',{class:'ic'},['📅']), 'Legg til A-laget']),
-      el('a', { class: 'btn', href: 'data/b.ics', target: '_blank', rel: 'noopener' }, [el('span',{class:'ic'},['📅']), 'Legg til B-laget']),
-      el('a', { class: 'btn', href: 'data/all.ics', target: '_blank', rel: 'noopener' }, [el('span',{class:'ic'},['📅']), 'Legg til alle'])
-    ]);
   }
 
   function matchRow(teamObj, m) {
@@ -632,7 +611,6 @@
     if (u) {
       row.style.cursor = 'pointer';
       row.addEventListener('click', (e) => {
-        // ikke åpne om brukeren markerer tekst
         if (window.getSelection && String(window.getSelection()).length > 0) return;
         window.open(u, '_blank', 'noopener');
       });
@@ -642,6 +620,9 @@
     return row;
   }
 
+  // ✅ KRAVET DITT:
+  // - Kommende / Siste spilte = bare Fagerborg-kamper
+  // - Alle lag = hele turneringen/avdelingen
   function filterMatches(teamObj, mode) {
     const ms = (teamObj?.matches || []).slice();
     const now = nowMs();
@@ -651,11 +632,13 @@
       return Number.isFinite(t) ? t : (mode === 'played' ? -Infinity : Infinity);
     };
 
+    const isFbk = (m) => isFagerborgMatch(teamObj, m);
+
     if (mode === 'upcoming') {
       const x = ms.filter(m => {
         const t = parseKickoffMs(m);
         if (!Number.isFinite(t)) return false;
-        // kommende hvis kickoff >= nå, og ikke avlyst
+        if (!isFbk(m)) return false; // <- kun Fagerborg
         return t >= now && (String(m.status || '').toUpperCase() !== 'CANCELLED');
       });
       x.sort((a,b) => getT(a) - getT(b));
@@ -666,13 +649,14 @@
       const x = ms.filter(m => {
         const t = parseKickoffMs(m);
         if (!Number.isFinite(t)) return false;
+        if (!isFbk(m)) return false; // <- kun Fagerborg
         return t < now;
       });
       x.sort((a,b) => getT(b) - getT(a));
       return x;
     }
 
-    // all
+    // "Alle lag"
     ms.sort((a,b) => getT(a) - getT(b));
     return ms;
   }
@@ -693,7 +677,7 @@
 
     root.appendChild(head);
 
-    if (isFront) return root; // front view håndteres separat
+    if (isFront) return root;
 
     const tabsState = { mode: 'upcoming' };
 
@@ -710,7 +694,7 @@
         el('button', {
           class:'tab', role:'tab', 'aria-selected':'false',
           onClick: () => { setMode('all'); }
-        }, ['Alle'])
+        }, ['Alle lag'])
       ])
     ]);
 
@@ -720,8 +704,8 @@
     root.appendChild(list);
 
     const actions = el('div', { class:'actions' }, [
-      el('a', { class:'btn', href: `data/${teamKey}.ics`, target:'_blank', rel:'noopener' }, [el('span',{class:'ic'},['📅']), `Legg til ${title} i kalender`]),
-      el('a', { class:'btn', href: 'data/all.ics', target:'_blank', rel:'noopener' }, [el('span',{class:'ic'},['🗓️']), 'Legg til alle'])
+      el('a', { class:'btn', href: `data/${teamKey}.ics`, target:'_blank', rel:'noopener' }, ['📅', `Legg til ${title} i kalender`]),
+      el('a', { class:'btn', href: 'data/all.ics', target:'_blank', rel:'noopener' }, ['🗓️', 'Legg til alle'])
     ]);
     root.appendChild(actions);
 
@@ -743,9 +727,9 @@
       const ms = filterMatches(teamObj, tabsState.mode);
       if (!ms.length) {
         const txt = (tabsState.mode === 'upcoming')
-          ? 'Ingen kommende kamper funnet.'
+          ? 'Ingen kommende Fagerborg-kamper funnet.'
           : (tabsState.mode === 'played')
-            ? 'Ingen spilte kamper funnet.'
+            ? 'Ingen spilte Fagerborg-kamper funnet.'
             : 'Ingen kamper funnet.';
         list.appendChild(el('div', { class:'empty' }, [txt]));
         return;
@@ -763,9 +747,11 @@
     const msAll = (teamObj?.matches || []).slice();
     const now = nowMs();
 
+    // Front view skal være “Fagerborg sine” neste/siste
     const withT = msAll
       .map(m => ({ m, t: parseKickoffMs(m) }))
-      .filter(x => Number.isFinite(x.t));
+      .filter(x => Number.isFinite(x.t))
+      .filter(x => isFagerborgMatch(teamObj, x.m));
 
     const next = withT
       .filter(x => x.t >= now && String(x.m.status || '').toUpperCase() !== 'CANCELLED')
@@ -836,8 +822,8 @@
     wrap.appendChild(grid);
 
     wrap.appendChild(el('div', { class:'actions' }, [
-      el('a', { class:'btn', href: `data/${teamKey}.ics`, target:'_blank', rel:'noopener' }, [el('span',{class:'ic'},['📅']), `Kalender: ${title}`]),
-      el('a', { class:'btn', href: 'data/all.ics', target:'_blank', rel:'noopener' }, [el('span',{class:'ic'},['🗓️']), 'Kalender: Alle'])
+      el('a', { class:'btn', href: `data/${teamKey}.ics`, target:'_blank', rel:'noopener' }, ['📅', `Kalender: ${title}`]),
+      el('a', { class:'btn', href: 'data/all.ics', target:'_blank', rel:'noopener' }, ['🗓️', 'Kalender: Alle'])
     ]));
 
     return wrap;
@@ -847,12 +833,30 @@
     app.innerHTML = '';
     if (isFront) {
       const fg = el('div', { class:'grid' });
-      fg.appendChild(el('div', { class:'card' }, [el('div',{class:'cardHead'},[el('div',{class:'cardTitle'},[el('div',{class:'teamMark'}), el('h2',{},['Laster…'])])]), renderSkeletonList(2)]));
+      fg.appendChild(el('div', { class:'card' }, [
+        el('div',{class:'cardHead'},[
+          el('div',{class:'cardTitle'},[el('div',{class:'teamMark'}), el('h2',{},['Laster…'])]),
+          el('div',{class:'badge'},['2026'])
+        ]),
+        renderSkeletonList(2)
+      ]));
       app.appendChild(fg);
     } else {
       const g = el('div', { class:'grid' });
-      if (showA) g.appendChild(el('div', { class:'card' }, [el('div',{class:'cardHead'},[el('div',{class:'cardTitle'},[el('div',{class:'teamMark'}), el('h2',{},['A-Laget'])]), el('div',{class:'badge'},['2026'])]), renderSkeletonList(4)]));
-      if (showB) g.appendChild(el('div', { class:'card' }, [el('div',{class:'cardHead'},[el('div',{class:'cardTitle'},[el('div',{class:'teamMark'}), el('h2',{},['B-Laget'])]), el('div',{class:'badge'},['2026'])]), renderSkeletonList(4)]));
+      if (showA) g.appendChild(el('div', { class:'card' }, [
+        el('div',{class:'cardHead'},[
+          el('div',{class:'cardTitle'},[el('div',{class:'teamMark'}), el('h2',{},['A-Laget'])]),
+          el('div',{class:'badge'},['2026'])
+        ]),
+        renderSkeletonList(4)
+      ]));
+      if (showB) g.appendChild(el('div', { class:'card' }, [
+        el('div',{class:'cardHead'},[
+          el('div',{class:'cardTitle'},[el('div',{class:'teamMark'}), el('h2',{},['B-Laget'])]),
+          el('div',{class:'badge'},['2026'])
+        ]),
+        renderSkeletonList(4)
+      ]));
       app.appendChild(g);
     }
     statusPill.textContent = 'Laster…';
@@ -886,7 +890,6 @@
     const aObj = data?.a || null;
     const bObj = data?.b || null;
 
-    // Subtitle
     if (isFront) {
       subtitle.textContent = (teamParam === 'a') ? '2026 · Kompaktvisning (A-laget)'
         : (teamParam === 'b') ? '2026 · Kompaktvisning (B-laget)'
@@ -920,33 +923,22 @@
     if (showB) grid.appendChild(card('b', bObj));
 
     app.appendChild(grid);
-
-    // Global ICS links under list if showing both
-    if (!teamParam) {
-      app.appendChild(el('div', { class:'note' }, [
-        el('div', { style:'padding-top:10px; font-weight:800; color: rgba(255,255,255,.92)' }, ['Kalender (ICS)']),
-        el('div', { style:'margin-top:6px;' }, []),
-      ]));
-      app.appendChild(makeIcsButtonsAll());
-    }
   }
 
   async function load() {
     renderLoading();
 
-    const url = `data/matches.json?ts=${Date.now()}`; // cache busting (IdrettenOnline cacher iframe)
+    const url = `data/matches.json?ts=${Date.now()}`;
     try {
       const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) throw new Error('bad-status');
       const data = await res.json();
 
-      // Basissjekk – men aldri raw error i UI
       if (!data || typeof data !== 'object') {
         renderError('Dataformatet var uventet.');
         return;
       }
 
-      // Om repoet er nytt og scraper ikke har kjørt enda:
       if ((!data.a || !data.a.matches) && (!data.b || !data.b.matches)) {
         statusPill.textContent = 'Ingen data';
         app.innerHTML = '';
@@ -957,7 +949,7 @@
           ]),
           el('div', { class:'empty' }, ['Ingen kamper funnet akkurat nå. Dette kan være midlertidig – prøv igjen senere.']),
           el('div', { class:'actions' }, [
-            el('a', { class:'btn', href:'data/all.ics', target:'_blank', rel:'noopener' }, [el('span',{class:'ic'},['📅']), 'Kalender: Alle (ICS)'])
+            el('a', { class:'btn', href:'data/all.ics', target:'_blank', rel:'noopener' }, ['📅', 'Kalender: Alle (ICS)'])
           ])
         ]));
         return;
