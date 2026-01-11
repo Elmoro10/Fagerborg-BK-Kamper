@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fagerborg BK – Terminliste 2026</title>
+  <meta name="description" content="Terminliste 2026 for Fagerborg BK – A-lag og B-lag. Kalender (ICS) integrasjon." />
+
+  <!-- Font (valgfritt, men gir “PL-ish” finish) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --bg2:#0a0f1e;
+      --card:#ffffff;
+      --text:#0b1220;
+      --muted:#667085;
+      --muted2:#98a2b3;
+      --line:#e5e7eb;
+      --shadow: 0 14px 40px rgba(2,6,23,.18);
+      --shadow2: 0 10px 26px rgba(2,6,23,.14);
+      --radius: 18px;
+
+      --brand:#16a34a;     /* Fagerborg-highlight */
+      --brand2:#22c55e;
+      --chip:#f2f4f7;
+      --chipText:#344054;
+
+      --okBg:#ecfdf3;
+      --okText:#067647;
+
+      --dangerBg:#fef3f2;
+      --dangerText:#b42318;
+
+      --soonBg:#f2f4f7;
+      --soonText:#344054;
+
+      --tabBg:#f2f4f7;
+      --tabActive:#ffffff;
+      --tabActiveShadow: 0 8px 18px rgba(2,6,23,.10);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--card);
+      background:
+        radial-gradient(1200px 600px at 15% 0%, rgba(34,197,94,.25), transparent 55%),
+        radial-gradient(1000px 520px at 95% 10%, rgba(59,130,246,.20), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 14px 22px;
+    }
+
+    /* Compact (iframe) header */
+    .topbar{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width: 0;
+    }
+    .brand h1{
+      margin:0;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing:-0.02em;
+      line-height:1.2;
+    }
+    .brand .sub{
+      color: rgba(255,255,255,.78);
+      font-size: 12px;
+      line-height:1.35;
+    }
+    .meta{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:8px;
+      text-align:right;
+      min-width: 160px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(8px);
+      font-size: 12px;
+      color: rgba(255,255,255,.85);
+      white-space:nowrap;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: var(--brand2);
+      box-shadow: 0 0 0 4px rgba(34,197,94,.18);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 860px){
+      .grid{grid-template-columns:1fr}
+      .meta{align-items:flex-start;text-align:left;min-width:0}
+      .topbar{flex-direction:column; align-items:stretch}
+    }
+
+    .card{
+      background: var(--card);
+      color: var(--text);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      border: 1px solid rgba(2,6,23,.06);
+    }
+    .cardHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 14px 14px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .cardTitle{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .teamMark{
+      width:10px;
+      height:26px;
+      border-radius:999px;
+      background: linear-gradient(180deg, var(--brand2), var(--brand));
+      box-shadow: 0 10px 20px rgba(34,197,94,.22);
+      flex:0 0 auto;
+    }
+    .cardTitle h2{
+      margin:0;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing:-0.02em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #111827;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      white-space:nowrap;
+    }
+
+    .tabs{
+      display:flex;
+      gap: 6px;
+      padding: 10px 10px 0;
+    }
+    .tabWrap{
+      background: var(--tabBg);
+      border-radius: 999px;
+      padding: 5px;
+      display:inline-flex;
+      gap:5px;
+      width: 100%;
+    }
+    .tab{
+      flex:1 1 auto;
+      border:0;
+      background: transparent;
+      color: #475467;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .tab[aria-selected="true"]{
+      background: var(--tabActive);
+      color: #101828;
+      box-shadow: var(--tabActiveShadow);
+    }
+
+    .list{
+      padding: 10px;
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+    }
+
+    .match{
+      display:grid;
+      grid-template-columns: 132px 1fr 70px;
+      gap: 10px;
+      align-items:center;
+      padding: 10px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(2,6,23,.06);
+      background: #fff;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    @media (max-width: 520px){
+      .match{grid-template-columns: 1fr; gap: 8px}
+    }
+
+    .match.fagerborg::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width: 6px;
+      background: linear-gradient(180deg, var(--brand2), var(--brand));
+    }
+    .when{
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+      min-width:0;
+    }
+    .when .dt{
+      font-size: 12px;
+      font-weight: 800;
+      color: #101828;
+      letter-spacing:-0.02em;
+    }
+    .when .venue{
+      font-size: 12px;
+      color: var(--muted);
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
+    .versus{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width:0;
+    }
+    .team{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      min-width:0;
+      flex: 1 1 0;
+    }
+    .name{
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing:-0.01em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .logo{
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: #f2f4f7;
+      border: 1px solid rgba(2,6,23,.06);
+      object-fit: cover;
+      flex:0 0 auto;
+    }
+    .vs{
+      font-weight: 900;
+      font-size: 12px;
+      color: #667085;
+      letter-spacing: .05em;
+      flex:0 0 auto;
+    }
+
+    .right{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap: 6px;
+    }
+    @media (max-width: 520px){
+      .right{align-items:flex-start}
+    }
+    .score{
+      font-weight: 900;
+      font-size: 14px;
+      color:#101828;
+      letter-spacing:-0.02em;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      background: var(--soonBg);
+      color: var(--soonText);
+      border: 1px solid rgba(2,6,23,.06);
+      white-space:nowrap;
+    }
+    .chip.ok{ background: var(--okBg); color: var(--okText); }
+    .chip.danger{ background: var(--dangerBg); color: var(--dangerText); }
+
+    .actions{
+      padding: 0 14px 14px;
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      padding: 9px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(2,6,23,.10);
+      background: #fff;
+      color:#101828;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 10px 22px rgba(2,6,23,.08);
+    }
+    .btn:hover{ text-decoration:none; filter: brightness(.98) }
+    .btn .ic{opacity:.85}
+    .note{
+      padding: 0 14px 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height:1.35;
+    }
+
+    /* Front view cards */
+    .frontGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 860px){
+      .frontGrid{grid-template-columns:1fr}
+    }
+    .miniCard{
+      background:#fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(2,6,23,.06);
+      color: var(--text);
+      padding: 12px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .miniTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .miniTop .ttl{
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing:-0.02em;
+    }
+    .miniTop .miniChip{
+      padding: 6px 10px;
+      border-radius: 999px;
+      background:#111827;
+      color:#fff;
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .miniBody{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width:0;
+    }
+    .miniBody .stack{
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+      min-width:0;
+      flex:1 1 auto;
+    }
+    .miniLine1{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      min-width:0;
+    }
+    .miniLine1 .miniScore{
+      font-weight: 900;
+      color:#101828;
+      white-space:nowrap;
+    }
+    .miniLine2{
+      color: var(--muted);
+      font-size: 12px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .skeleton{
+      background: linear-gradient(90deg, #f2f4f7, #e4e7ec, #f2f4f7);
+      background-size: 200% 100%;
+      animation: shimmer 1.2s infinite linear;
+      border-radius: 12px;
+      height: 54px;
+      border: 1px solid rgba(2,6,23,.06);
+    }
+    @keyframes shimmer{
+      0%{background-position: 200% 0}
+      100%{background-position: -200% 0}
+    }
+
+    .empty{
+      padding: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.35;
+    }
+    .footerHint{
+      margin-top: 10px;
+      color: rgba(255,255,255,.70);
+      font-size: 12px;
+      line-height:1.35;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <h1>Fagerborg BK – Terminliste</h1>
+        <div class="sub" id="subtitle">2026 · A-lag og B-lag</div>
+        <div class="footerHint">
+          Kalenderlenker (ICS) kan brukes til abonnement/import i Google/Apple/Outlook. IdrettenOnline kan eventuelt bruke ICS-lenken dersom de støtter kalenderimport/abonnement.
+        </div>
+      </div>
+      <div class="meta">
+        <div class="pill"><span class="dot"></span><span id="statusPill">Laster…</span></div>
+        <div class="pill" id="updatedPill" style="display:none;">Oppdatert: <span id="updatedAt"></span></div>
+      </div>
+    </div>
+
+    <div id="app"></div>
+  </div>
+
+<script>
+(() => {
+  const app = document.getElementById('app');
+  const statusPill = document.getElementById('statusPill');
+  const updatedPill = document.getElementById('updatedPill');
+  const updatedAtEl = document.getElementById('updatedAt');
+  const subtitle = document.getElementById('subtitle');
+
+  const params = new URLSearchParams(location.search);
+  const teamParam = (params.get('team') || '').toLowerCase(); // a|b|''(both)
+  const viewParam = (params.get('view') || '').toLowerCase(); // front|''
+
+  const showA = (teamParam !== 'b');
+  const showB = (teamParam !== 'a');
+  const isFront = (viewParam === 'front');
+
+  function el(tag, attrs = {}, children = []) {
+    const n = document.createElement(tag);
+    for (const [k,v] of Object.entries(attrs)) {
+      if (k === 'class') n.className = v;
+      else if (k === 'html') n.innerHTML = v;
+      else if (k.startsWith('on') && typeof v === 'function') n.addEventListener(k.slice(2), v);
+      else if (v !== null && v !== undefined) n.setAttribute(k, v);
+    }
+    for (const c of children) {
+      if (c === null || c === undefined) continue;
+      n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    }
+    return n;
+  }
+
+  function fmtNo(dtIso) {
+    try {
+      const d = new Date(dtIso);
+      // no-NO / nb-NO – i praksis samme i de fleste nettlesere
+      return d.toLocaleString('nb-NO', {
+        weekday: 'short',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      }).replace(',', '');
+    } catch {
+      return 'Ukjent tid';
+    }
+  }
+
+  function nowMs() { return Date.now(); }
+
+  function parseKickoffMs(m) {
+    const t = Date.parse(m.kickoff);
+    return Number.isFinite(t) ? t : NaN;
+  }
+
+  function isFinished(m) {
+    return (m.status || '') === 'FINISHED' ||
+      (Number.isFinite(m.homeGoals) && Number.isFinite(m.awayGoals));
+  }
+
+  function statusLabel(m) {
+    const s = (m.status || '').toUpperCase();
+    if (s === 'CANCELLED') return { text: 'Avlyst', kind: 'danger' };
+    if (isFinished(m)) return { text: 'Spilt', kind: 'ok' };
+
+    const t = parseKickoffMs(m);
+    if (Number.isFinite(t) && t >= nowMs()) return { text: 'Kommende', kind: '' };
+    return { text: 'Kommende', kind: '' };
+  }
+
+  function scoreText(m) {
+    if (Number.isFinite(m.homeGoals) && Number.isFinite(m.awayGoals)) return `${m.homeGoals}\u2013${m.awayGoals}`;
+    if (isFinished(m)) return '–';
+    return '–';
+  }
+
+  function isFagerborgMatch(teamObj, m) {
+    const tn = (teamObj && teamObj.teamName) ? teamObj.teamName : 'Fagerborg';
+    const home = (m.homeTeam || '').toLowerCase();
+    const away = (m.awayTeam || '').toLowerCase();
+    const needle = (tn || 'Fagerborg').toLowerCase();
+    return home.includes(needle) || away.includes(needle);
+  }
+
+  function safeUrl(u) {
+    try {
+      if (!u) return null;
+      const x = new URL(u, location.href);
+      return x.href;
+    } catch {
+      return null;
+    }
+  }
+
+  function renderSkeletonList(count = 4) {
+    const list = el('div', { class: 'list' });
+    for (let i=0;i<count;i++) list.appendChild(el('div', { class: 'skeleton' }));
+    return list;
+  }
+
+  function makeIcsButtons(prefix) {
+    return el('div', { class: 'actions' }, [
+      el('a', { class: 'btn', href: `data/${prefix}.ics`, target: '_blank', rel: 'noopener' }, [
+        el('span', { class: 'ic' }, ['📅']),
+        'Legg til i kalender (ICS)'
+      ])
+    ]);
+  }
+
+  function makeIcsButtonsAll() {
+    return el('div', { class: 'actions' }, [
+      el('a', { class: 'btn', href: 'data/a.ics', target: '_blank', rel: 'noopener' }, [el('span',{class:'ic'},['📅']), 'Legg til A-laget']),
+      el('a', { class: 'btn', href: 'data/b.ics', target: '_blank', rel: 'noopener' }, [el('span',{class:'ic'},['📅']), 'Legg til B-laget']),
+      el('a', { class: 'btn', href: 'data/all.ics', target: '_blank', rel: 'noopener' }, [el('span',{class:'ic'},['📅']), 'Legg til alle'])
+    ]);
+  }
+
+  function matchRow(teamObj, m) {
+    const st = statusLabel(m);
+    const row = el('div', { class: `match ${isFagerborgMatch(teamObj, m) ? 'fagerborg' : ''}` });
+
+    const dt = fmtNo(m.kickoff);
+    const venue = m.venue || '';
+
+    const left = el('div', { class: 'when' }, [
+      el('div', { class: 'dt' }, [dt]),
+      el('div', { class: 'venue', title: venue }, [venue || ''])
+    ]);
+
+    const homeLogo = m.homeLogoUrl || 'assets/logos/placeholder.svg';
+    const awayLogo = m.awayLogoUrl || 'assets/logos/placeholder.svg';
+
+    const mid = el('div', { class: 'versus' }, [
+      el('div', { class: 'team' }, [
+        el('img', { class: 'logo', src: homeLogo, alt: `${m.homeTeam || ''} logo`, loading:'lazy' }),
+        el('div', { class: 'name', title: m.homeTeam || '' }, [m.homeTeam || 'Ukjent'])
+      ]),
+      el('div', { class: 'vs' }, ['VS']),
+      el('div', { class: 'team', style: 'justify-content:flex-end;' }, [
+        el('div', { class: 'name', title: m.awayTeam || '' }, [m.awayTeam || 'Ukjent']),
+        el('img', { class: 'logo', src: awayLogo, alt: `${m.awayTeam || ''} logo`, loading:'lazy' })
+      ])
+    ]);
+
+    const right = el('div', { class: 'right' }, [
+      el('div', { class: 'score' }, [scoreText(m)]),
+      el('div', { class: `chip ${st.kind}` }, [st.text])
+    ]);
+
+    row.appendChild(left);
+    row.appendChild(mid);
+    row.appendChild(right);
+
+    const u = safeUrl(m.matchUrl);
+    if (u) {
+      row.style.cursor = 'pointer';
+      row.addEventListener('click', (e) => {
+        // ikke åpne om brukeren markerer tekst
+        if (window.getSelection && String(window.getSelection()).length > 0) return;
+        window.open(u, '_blank', 'noopener');
+      });
+      row.title = 'Åpne kamp på fotball.no';
+    }
+
+    return row;
+  }
+
+  function filterMatches(teamObj, mode) {
+    const ms = (teamObj?.matches || []).slice();
+    const now = nowMs();
+
+    const getT = (m) => {
+      const t = parseKickoffMs(m);
+      return Number.isFinite(t) ? t : (mode === 'played' ? -Infinity : Infinity);
+    };
+
+    if (mode === 'upcoming') {
+      const x = ms.filter(m => {
+        const t = parseKickoffMs(m);
+        if (!Number.isFinite(t)) return false;
+        // kommende hvis kickoff >= nå, og ikke avlyst
+        return t >= now && (String(m.status || '').toUpperCase() !== 'CANCELLED');
+      });
+      x.sort((a,b) => getT(a) - getT(b));
+      return x;
+    }
+
+    if (mode === 'played') {
+      const x = ms.filter(m => {
+        const t = parseKickoffMs(m);
+        if (!Number.isFinite(t)) return false;
+        return t < now;
+      });
+      x.sort((a,b) => getT(b) - getT(a));
+      return x;
+    }
+
+    // all
+    ms.sort((a,b) => getT(a) - getT(b));
+    return ms;
+  }
+
+  function card(teamKey, teamObj) {
+    const title = (teamKey === 'a') ? 'A-Laget' : 'B-Laget';
+    const badgeText = (teamObj?.tournament || '2026');
+
+    const root = el('div', { class: 'card' });
+
+    const head = el('div', { class: 'cardHead' }, [
+      el('div', { class: 'cardTitle' }, [
+        el('div', { class: 'teamMark' }),
+        el('h2', {}, [title])
+      ]),
+      el('div', { class: 'badge' }, [badgeText])
+    ]);
+
+    root.appendChild(head);
+
+    if (isFront) return root; // front view håndteres separat
+
+    const tabsState = { mode: 'upcoming' };
+
+    const tabs = el('div', { class: 'tabs' }, [
+      el('div', { class: 'tabWrap', role:'tablist', 'aria-label': `${title} filter` }, [
+        el('button', {
+          class:'tab', role:'tab', 'aria-selected':'true',
+          onClick: () => { setMode('upcoming'); }
+        }, ['Kommende']),
+        el('button', {
+          class:'tab', role:'tab', 'aria-selected':'false',
+          onClick: () => { setMode('played'); }
+        }, ['Siste spilte']),
+        el('button', {
+          class:'tab', role:'tab', 'aria-selected':'false',
+          onClick: () => { setMode('all'); }
+        }, ['Alle'])
+      ])
+    ]);
+
+    root.appendChild(tabs);
+
+    const list = el('div', { class: 'list' });
+    root.appendChild(list);
+
+    const actions = el('div', { class:'actions' }, [
+      el('a', { class:'btn', href: `data/${teamKey}.ics`, target:'_blank', rel:'noopener' }, [el('span',{class:'ic'},['📅']), `Legg til ${title} i kalender`]),
+      el('a', { class:'btn', href: 'data/all.ics', target:'_blank', rel:'noopener' }, [el('span',{class:'ic'},['🗓️']), 'Legg til alle'])
+    ]);
+    root.appendChild(actions);
+
+    function setMode(mode) {
+      tabsState.mode = mode;
+      const btns = tabs.querySelectorAll('.tab');
+      btns.forEach((b, idx) => {
+        const sel =
+          (idx===0 && mode==='upcoming') ||
+          (idx===1 && mode==='played') ||
+          (idx===2 && mode==='all');
+        b.setAttribute('aria-selected', sel ? 'true' : 'false');
+      });
+      render();
+    }
+
+    function render() {
+      list.innerHTML = '';
+      const ms = filterMatches(teamObj, tabsState.mode);
+      if (!ms.length) {
+        const txt = (tabsState.mode === 'upcoming')
+          ? 'Ingen kommende kamper funnet.'
+          : (tabsState.mode === 'played')
+            ? 'Ingen spilte kamper funnet.'
+            : 'Ingen kamper funnet.';
+        list.appendChild(el('div', { class:'empty' }, [txt]));
+        return;
+      }
+      ms.forEach(m => list.appendChild(matchRow(teamObj, m)));
+    }
+
+    render();
+    return root;
+  }
+
+  function frontView(teamKey, teamObj) {
+    const title = (teamKey === 'a') ? 'A-Laget' : 'B-Laget';
+
+    const msAll = (teamObj?.matches || []).slice();
+    const now = nowMs();
+
+    const withT = msAll
+      .map(m => ({ m, t: parseKickoffMs(m) }))
+      .filter(x => Number.isFinite(x.t));
+
+    const next = withT
+      .filter(x => x.t >= now && String(x.m.status || '').toUpperCase() !== 'CANCELLED')
+      .sort((a,b) => a.t - b.t)[0]?.m || null;
+
+    const last = withT
+      .filter(x => x.t < now)
+      .sort((a,b) => b.t - a.t)[0]?.m || null;
+
+    function mini(titleText, m, chipText) {
+      const card = el('div', { class:'miniCard' });
+
+      card.appendChild(el('div', { class:'miniTop' }, [
+        el('div', { class:'ttl' }, [titleText]),
+        el('div', { class:'miniChip' }, [chipText])
+      ]));
+
+      if (!m) {
+        card.appendChild(el('div', { class:'empty' }, ['Ingen kamp funnet.']));
+        return card;
+      }
+
+      const dt = fmtNo(m.kickoff);
+      const homeLogo = m.homeLogoUrl || 'assets/logos/placeholder.svg';
+      const awayLogo = m.awayLogoUrl || 'assets/logos/placeholder.svg';
+
+      const opp = (m.homeTeam && m.awayTeam) ? `${m.homeTeam} – ${m.awayTeam}` : 'Ukjente lag';
+      const scr = scoreText(m);
+      const u = safeUrl(m.matchUrl);
+
+      const body = el('div', { class:'miniBody' }, [
+        el('img', { class:'logo', src: homeLogo, alt:'Hjemmelogo', loading:'lazy' }),
+        el('img', { class:'logo', src: awayLogo, alt:'Bortelogo', loading:'lazy' }),
+        el('div', { class:'stack' }, [
+          el('div', { class:'miniLine1' }, [
+            el('div', { class:'name', style:'max-width: 100%;' }, [opp]),
+            el('div', { class:'miniScore' }, [scr])
+          ]),
+          el('div', { class:'miniLine2', title: `${dt}${m.venue ? ' · ' + m.venue : ''}` }, [`${dt}${m.venue ? ' · ' + m.venue : ''}`])
+        ])
+      ]);
+
+      card.appendChild(body);
+
+      if (u) {
+        card.style.cursor = 'pointer';
+        card.title = 'Åpne kamp på fotball.no';
+        card.addEventListener('click', () => window.open(u, '_blank', 'noopener'));
+      }
+
+      return card;
+    }
+
+    const wrap = el('div', { class:'card' });
+    wrap.appendChild(el('div', { class:'cardHead' }, [
+      el('div', { class:'cardTitle' }, [
+        el('div', { class:'teamMark' }),
+        el('h2', {}, [`${title} (Kompakt)`])
+      ]),
+      el('div', { class:'badge' }, [teamObj?.tournament || '2026'])
+    ]));
+
+    const grid = el('div', { class:'frontGrid', style:'padding: 12px;' }, [
+      mini('Neste kamp', next, 'Kommende'),
+      mini('Sist spilte', last, 'Siste')
+    ]);
+
+    wrap.appendChild(grid);
+
+    wrap.appendChild(el('div', { class:'actions' }, [
+      el('a', { class:'btn', href: `data/${teamKey}.ics`, target:'_blank', rel:'noopener' }, [el('span',{class:'ic'},['📅']), `Kalender: ${title}`]),
+      el('a', { class:'btn', href: 'data/all.ics', target:'_blank', rel:'noopener' }, [el('span',{class:'ic'},['🗓️']), 'Kalender: Alle'])
+    ]));
+
+    return wrap;
+  }
+
+  function renderLoading() {
+    app.innerHTML = '';
+    if (isFront) {
+      const fg = el('div', { class:'grid' });
+      fg.appendChild(el('div', { class:'card' }, [el('div',{class:'cardHead'},[el('div',{class:'cardTitle'},[el('div',{class:'teamMark'}), el('h2',{},['Laster…'])])]), renderSkeletonList(2)]));
+      app.appendChild(fg);
+    } else {
+      const g = el('div', { class:'grid' });
+      if (showA) g.appendChild(el('div', { class:'card' }, [el('div',{class:'cardHead'},[el('div',{class:'cardTitle'},[el('div',{class:'teamMark'}), el('h2',{},['A-Laget'])]), el('div',{class:'badge'},['2026'])]), renderSkeletonList(4)]));
+      if (showB) g.appendChild(el('div', { class:'card' }, [el('div',{class:'cardHead'},[el('div',{class:'cardTitle'},[el('div',{class:'teamMark'}), el('h2',{},['B-Laget'])]), el('div',{class:'badge'},['2026'])]), renderSkeletonList(4)]));
+      app.appendChild(g);
+    }
+    statusPill.textContent = 'Laster…';
+    updatedPill.style.display = 'none';
+  }
+
+  function renderError(msg) {
+    app.innerHTML = '';
+    const c = el('div', { class:'card' }, [
+      el('div', { class:'cardHead' }, [
+        el('div', { class:'cardTitle' }, [el('div',{class:'teamMark'}), el('h2',{},['Kunne ikke hente data'])]),
+        el('div', { class:'badge' }, ['2026'])
+      ]),
+      el('div', { class:'empty' }, [msg || 'Prøv igjen senere.'])
+    ]);
+    app.appendChild(c);
+    statusPill.textContent = 'Feil';
+    updatedPill.style.display = 'none';
+  }
+
+  function renderData(data) {
+    app.innerHTML = '';
+
+    const updatedAt = data?.updatedAt || null;
+    if (updatedAt) {
+      updatedAtEl.textContent = updatedAt;
+      updatedPill.style.display = '';
+    }
+    statusPill.textContent = 'Oppdatert';
+
+    const aObj = data?.a || null;
+    const bObj = data?.b || null;
+
+    // Subtitle
+    if (isFront) {
+      subtitle.textContent = (teamParam === 'a') ? '2026 · Kompaktvisning (A-laget)'
+        : (teamParam === 'b') ? '2026 · Kompaktvisning (B-laget)'
+        : '2026 · Kompaktvisning';
+    } else {
+      subtitle.textContent = (teamParam === 'a') ? '2026 · A-laget'
+        : (teamParam === 'b') ? '2026 · B-laget'
+        : '2026 · A-lag og B-lag';
+    }
+
+    if (isFront) {
+      const g = el('div', { class:'grid' });
+      if (showA && aObj) g.appendChild(frontView('a', aObj));
+      if (showB && bObj) g.appendChild(frontView('b', bObj));
+      if (!g.children.length) {
+        g.appendChild(el('div', { class:'card' }, [
+          el('div', { class:'cardHead' }, [
+            el('div', { class:'cardTitle' }, [el('div',{class:'teamMark'}), el('h2',{},['Ingen kamper funnet'])]),
+            el('div', { class:'badge' }, ['2026'])
+          ]),
+          el('div', { class:'empty' }, ['Ingen data tilgjengelig for valgt team.'])
+        ]));
+      }
+      app.appendChild(g);
+      return;
+    }
+
+    const grid = el('div', { class:'grid' });
+
+    if (showA) grid.appendChild(card('a', aObj));
+    if (showB) grid.appendChild(card('b', bObj));
+
+    app.appendChild(grid);
+
+    // Global ICS links under list if showing both
+    if (!teamParam) {
+      app.appendChild(el('div', { class:'note' }, [
+        el('div', { style:'padding-top:10px; font-weight:800; color: rgba(255,255,255,.92)' }, ['Kalender (ICS)']),
+        el('div', { style:'margin-top:6px;' }, []),
+      ]));
+      app.appendChild(makeIcsButtonsAll());
+    }
+  }
+
+  async function load() {
+    renderLoading();
+
+    const url = `data/matches.json?ts=${Date.now()}`; // cache busting (IdrettenOnline cacher iframe)
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error('bad-status');
+      const data = await res.json();
+
+      // Basissjekk – men aldri raw error i UI
+      if (!data || typeof data !== 'object') {
+        renderError('Dataformatet var uventet.');
+        return;
+      }
+
+      // Om repoet er nytt og scraper ikke har kjørt enda:
+      if ((!data.a || !data.a.matches) && (!data.b || !data.b.matches)) {
+        statusPill.textContent = 'Ingen data';
+        app.innerHTML = '';
+        app.appendChild(el('div', { class:'card' }, [
+          el('div', { class:'cardHead' }, [
+            el('div', { class:'cardTitle' }, [el('div',{class:'teamMark'}), el('h2',{},['Ingen kamper funnet'])]),
+            el('div', { class:'badge' }, ['2026'])
+          ]),
+          el('div', { class:'empty' }, ['Ingen kamper funnet akkurat nå. Dette kan være midlertidig – prøv igjen senere.']),
+          el('div', { class:'actions' }, [
+            el('a', { class:'btn', href:'data/all.ics', target:'_blank', rel:'noopener' }, [el('span',{class:'ic'},['📅']), 'Kalender: Alle (ICS)'])
+          ])
+        ]));
+        return;
+      }
+
+      renderData(data);
+    } catch (e) {
+      renderError('Kunne ikke hente kampdata. (Sjekk at GitHub Pages leverer data/matches.json)');
+    }
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>
