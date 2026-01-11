@@ -1,0 +1,998 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fagerborg BK//Terminliste 2026//NO
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Fagerborg BK – B-laget (2026)
+X-WR-TIMEZONE:UTC
+BEGIN:VEVENT
+UID:8975967-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260420T181500Z
+DTEND:20260420T201500Z
+SUMMARY:Veitvet – Fagerborg 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975967
+STATUS:CONFIRMED
+LOCATION:Veitvet kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975967
+END:VEVENT
+BEGIN:VEVENT
+UID:8975968-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260420T181500Z
+DTEND:20260420T201500Z
+SUMMARY:Lille Tøyen – Monolitten Idrettslag
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975968
+STATUS:CONFIRMED
+LOCATION:Caltexløkka
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975968
+END:VEVENT
+BEGIN:VEVENT
+UID:8975969-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260420T181500Z
+DTEND:20260420T201500Z
+SUMMARY:Oppegård – Jutul
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975969
+STATUS:CONFIRMED
+LOCATION:Østre Greverud kg.
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975969
+END:VEVENT
+BEGIN:VEVENT
+UID:8975970-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260420T181500Z
+DTEND:20260420T201500Z
+SUMMARY:Sagene 2 – Frisk Asker
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975970
+STATUS:CONFIRMED
+LOCATION:Bjølsen kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975970
+END:VEVENT
+BEGIN:VEVENT
+UID:8975971-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260421T181500Z
+DTEND:20260421T201500Z
+SUMMARY:Sterling – Furuset 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975971
+STATUS:CONFIRMED
+LOCATION:Jordal kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975971
+END:VEVENT
+BEGIN:VEVENT
+UID:8975972-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260427T181500Z
+DTEND:20260427T201500Z
+SUMMARY:Frisk Asker – Veitvet
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975972
+STATUS:CONFIRMED
+LOCATION:Frisk Arena
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975972
+END:VEVENT
+BEGIN:VEVENT
+UID:8975973-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260427T181500Z
+DTEND:20260427T201500Z
+SUMMARY:Jutul – Sagene 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975973
+STATUS:CONFIRMED
+LOCATION:Skuisletta kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975973
+END:VEVENT
+BEGIN:VEVENT
+UID:8975974-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260427T181500Z
+DTEND:20260427T201500Z
+SUMMARY:Lille Tøyen – Oppegård
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975974
+STATUS:CONFIRMED
+LOCATION:Caltexløkka
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975974
+END:VEVENT
+BEGIN:VEVENT
+UID:8975975-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260427T181500Z
+DTEND:20260427T201500Z
+SUMMARY:Furuset 2 – Monolitten Idrettslag
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975975
+STATUS:CONFIRMED
+LOCATION:Furuset kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975975
+END:VEVENT
+BEGIN:VEVENT
+UID:8975976-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260429T183000Z
+DTEND:20260429T203000Z
+SUMMARY:Sterling – Fagerborg 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975976
+STATUS:CONFIRMED
+LOCATION:Jordal kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975976
+END:VEVENT
+BEGIN:VEVENT
+UID:8975977-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260504T181500Z
+DTEND:20260504T201500Z
+SUMMARY:Veitvet – Jutul
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975977
+STATUS:CONFIRMED
+LOCATION:Veitvet kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975977
+END:VEVENT
+BEGIN:VEVENT
+UID:8975978-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260504T181500Z
+DTEND:20260504T201500Z
+SUMMARY:Fagerborg 2 – Frisk Asker
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975978
+STATUS:CONFIRMED
+LOCATION:Marienlyst kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975978
+END:VEVENT
+BEGIN:VEVENT
+UID:8975979-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260504T181500Z
+DTEND:20260504T201500Z
+SUMMARY:Oppegård – Furuset 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975979
+STATUS:CONFIRMED
+LOCATION:Østre Greverud kg.
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975979
+END:VEVENT
+BEGIN:VEVENT
+UID:8975980-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260504T181500Z
+DTEND:20260504T201500Z
+SUMMARY:Sagene 2 – Lille Tøyen
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975980
+STATUS:CONFIRMED
+LOCATION:Bjølsen kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975980
+END:VEVENT
+BEGIN:VEVENT
+UID:8975981-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260504T181500Z
+DTEND:20260504T201500Z
+SUMMARY:Monolitten Idrettslag – Sterling
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975981
+STATUS:CONFIRMED
+LOCATION:Ferd stadion (Bygdøy)
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975981
+END:VEVENT
+BEGIN:VEVENT
+UID:8975982-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260511T181500Z
+DTEND:20260511T201500Z
+SUMMARY:Jutul – Fagerborg 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975982
+STATUS:CONFIRMED
+LOCATION:Skuisletta kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975982
+END:VEVENT
+BEGIN:VEVENT
+UID:8975983-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260511T181500Z
+DTEND:20260511T201500Z
+SUMMARY:Lille Tøyen – Veitvet
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975983
+STATUS:CONFIRMED
+LOCATION:Caltexløkka
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975983
+END:VEVENT
+BEGIN:VEVENT
+UID:8975984-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260511T181500Z
+DTEND:20260511T201500Z
+SUMMARY:Furuset 2 – Sagene 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975984
+STATUS:CONFIRMED
+LOCATION:Furuset kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975984
+END:VEVENT
+BEGIN:VEVENT
+UID:8975985-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260511T181500Z
+DTEND:20260511T201500Z
+SUMMARY:Monolitten Idrettslag – Oppegård
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975985
+STATUS:CONFIRMED
+LOCATION:Ferd stadion (Bygdøy)
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975985
+END:VEVENT
+BEGIN:VEVENT
+UID:8975986-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260511T181500Z
+DTEND:20260511T201500Z
+SUMMARY:Frisk Asker – Sterling
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975986
+STATUS:CONFIRMED
+LOCATION:Frisk Arena
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975986
+END:VEVENT
+BEGIN:VEVENT
+UID:8975987-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260518T181500Z
+DTEND:20260518T201500Z
+SUMMARY:Veitvet – Furuset 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975987
+STATUS:CONFIRMED
+LOCATION:Veitvet kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975987
+END:VEVENT
+BEGIN:VEVENT
+UID:8975988-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260518T181500Z
+DTEND:20260518T201500Z
+SUMMARY:Fagerborg 2 – Lille Tøyen
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975988
+STATUS:CONFIRMED
+LOCATION:Marienlyst kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975988
+END:VEVENT
+BEGIN:VEVENT
+UID:8975989-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260518T181500Z
+DTEND:20260518T201500Z
+SUMMARY:Frisk Asker – Jutul
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975989
+STATUS:CONFIRMED
+LOCATION:Frisk Arena
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975989
+END:VEVENT
+BEGIN:VEVENT
+UID:8975990-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260518T181500Z
+DTEND:20260518T201500Z
+SUMMARY:Sagene 2 – Monolitten Idrettslag
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975990
+STATUS:CONFIRMED
+LOCATION:Bjølsen kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975990
+END:VEVENT
+BEGIN:VEVENT
+UID:8975991-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260518T181500Z
+DTEND:20260518T201500Z
+SUMMARY:Oppegård – Sterling
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975991
+STATUS:CONFIRMED
+LOCATION:Østre Greverud kg.
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975991
+END:VEVENT
+BEGIN:VEVENT
+UID:8975992-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260601T181500Z
+DTEND:20260601T201500Z
+SUMMARY:Lille Tøyen – Frisk Asker
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975992
+STATUS:CONFIRMED
+LOCATION:Caltexløkka
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975992
+END:VEVENT
+BEGIN:VEVENT
+UID:8975993-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260601T181500Z
+DTEND:20260601T201500Z
+SUMMARY:Furuset 2 – Fagerborg 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975993
+STATUS:CONFIRMED
+LOCATION:Furuset kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975993
+END:VEVENT
+BEGIN:VEVENT
+UID:8975994-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260601T181500Z
+DTEND:20260601T201500Z
+SUMMARY:Monolitten Idrettslag – Veitvet
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975994
+STATUS:CONFIRMED
+LOCATION:Ferd stadion (Bygdøy)
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975994
+END:VEVENT
+BEGIN:VEVENT
+UID:8975995-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260601T181500Z
+DTEND:20260601T201500Z
+SUMMARY:Oppegård – Sagene 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975995
+STATUS:CONFIRMED
+LOCATION:Østre Greverud kg.
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975995
+END:VEVENT
+BEGIN:VEVENT
+UID:8975996-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260603T183000Z
+DTEND:20260603T203000Z
+SUMMARY:Sterling – Jutul
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975996
+STATUS:CONFIRMED
+LOCATION:Jordal kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975996
+END:VEVENT
+BEGIN:VEVENT
+UID:8975997-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260608T181500Z
+DTEND:20260608T201500Z
+SUMMARY:Veitvet – Oppegård
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975997
+STATUS:CONFIRMED
+LOCATION:Veitvet kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975997
+END:VEVENT
+BEGIN:VEVENT
+UID:8975998-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260608T181500Z
+DTEND:20260608T201500Z
+SUMMARY:Fagerborg 2 – Monolitten Idrettslag
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975998
+STATUS:CONFIRMED
+LOCATION:Marienlyst kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975998
+END:VEVENT
+BEGIN:VEVENT
+UID:8975999-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260608T181500Z
+DTEND:20260608T201500Z
+SUMMARY:Frisk Asker – Furuset 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8975999
+STATUS:CONFIRMED
+LOCATION:Frisk Arena
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8975999
+END:VEVENT
+BEGIN:VEVENT
+UID:8976000-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260608T181500Z
+DTEND:20260608T201500Z
+SUMMARY:Jutul – Lille Tøyen
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976000
+STATUS:CONFIRMED
+LOCATION:Skuisletta kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976000
+END:VEVENT
+BEGIN:VEVENT
+UID:8976001-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260609T181500Z
+DTEND:20260609T201500Z
+SUMMARY:Sterling – Sagene 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976001
+STATUS:CONFIRMED
+LOCATION:Jordal kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976001
+END:VEVENT
+BEGIN:VEVENT
+UID:8976002-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260615T181500Z
+DTEND:20260615T201500Z
+SUMMARY:Furuset 2 – Jutul
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976002
+STATUS:CONFIRMED
+LOCATION:Furuset kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976002
+END:VEVENT
+BEGIN:VEVENT
+UID:8976003-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260615T181500Z
+DTEND:20260615T201500Z
+SUMMARY:Monolitten Idrettslag – Frisk Asker
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976003
+STATUS:CONFIRMED
+LOCATION:Ferd stadion (Bygdøy)
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976003
+END:VEVENT
+BEGIN:VEVENT
+UID:8976004-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260615T181500Z
+DTEND:20260615T201500Z
+SUMMARY:Oppegård – Fagerborg 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976004
+STATUS:CONFIRMED
+LOCATION:Østre Greverud kg.
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976004
+END:VEVENT
+BEGIN:VEVENT
+UID:8976005-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260615T181500Z
+DTEND:20260615T201500Z
+SUMMARY:Sagene 2 – Veitvet
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976005
+STATUS:CONFIRMED
+LOCATION:Bjølsen kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976005
+END:VEVENT
+BEGIN:VEVENT
+UID:8976006-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260615T181500Z
+DTEND:20260615T201500Z
+SUMMARY:Lille Tøyen – Sterling
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976006
+STATUS:CONFIRMED
+LOCATION:Caltexløkka
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976006
+END:VEVENT
+BEGIN:VEVENT
+UID:8976007-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260622T181500Z
+DTEND:20260622T201500Z
+SUMMARY:Fagerborg 2 – Sagene 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976007
+STATUS:CONFIRMED
+LOCATION:Marienlyst kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976007
+END:VEVENT
+BEGIN:VEVENT
+UID:8976008-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260622T181500Z
+DTEND:20260622T201500Z
+SUMMARY:Frisk Asker – Oppegård
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976008
+STATUS:CONFIRMED
+LOCATION:Frisk Arena
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976008
+END:VEVENT
+BEGIN:VEVENT
+UID:8976009-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260622T181500Z
+DTEND:20260622T201500Z
+SUMMARY:Jutul – Monolitten Idrettslag
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976009
+STATUS:CONFIRMED
+LOCATION:Skuisletta kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976009
+END:VEVENT
+BEGIN:VEVENT
+UID:8976010-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260622T181500Z
+DTEND:20260622T201500Z
+SUMMARY:Lille Tøyen – Furuset 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976010
+STATUS:CONFIRMED
+LOCATION:Caltexløkka
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976010
+END:VEVENT
+BEGIN:VEVENT
+UID:8976011-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260623T181500Z
+DTEND:20260623T201500Z
+SUMMARY:Sterling – Veitvet
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976011
+STATUS:CONFIRMED
+LOCATION:Jordal kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976011
+END:VEVENT
+BEGIN:VEVENT
+UID:8976012-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260817T181500Z
+DTEND:20260817T201500Z
+SUMMARY:Fagerborg 2 – Veitvet
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976012
+STATUS:CONFIRMED
+LOCATION:Marienlyst kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976012
+END:VEVENT
+BEGIN:VEVENT
+UID:8976013-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260817T181500Z
+DTEND:20260817T201500Z
+SUMMARY:Monolitten Idrettslag – Lille Tøyen
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976013
+STATUS:CONFIRMED
+LOCATION:Ferd stadion (Bygdøy)
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976013
+END:VEVENT
+BEGIN:VEVENT
+UID:8976014-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260817T181500Z
+DTEND:20260817T201500Z
+SUMMARY:Jutul – Oppegård
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976014
+STATUS:CONFIRMED
+LOCATION:Skuisletta kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976014
+END:VEVENT
+BEGIN:VEVENT
+UID:8976015-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260817T181500Z
+DTEND:20260817T201500Z
+SUMMARY:Frisk Asker – Sagene 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976015
+STATUS:CONFIRMED
+LOCATION:Frisk Arena
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976015
+END:VEVENT
+BEGIN:VEVENT
+UID:8976016-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260817T181500Z
+DTEND:20260817T201500Z
+SUMMARY:Furuset 2 – Sterling
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976016
+STATUS:CONFIRMED
+LOCATION:Furuset kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976016
+END:VEVENT
+BEGIN:VEVENT
+UID:8976017-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260824T181500Z
+DTEND:20260824T201500Z
+SUMMARY:Veitvet – Frisk Asker
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976017
+STATUS:CONFIRMED
+LOCATION:Veitvet kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976017
+END:VEVENT
+BEGIN:VEVENT
+UID:8976018-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260824T181500Z
+DTEND:20260824T201500Z
+SUMMARY:Sagene 2 – Jutul
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976018
+STATUS:CONFIRMED
+LOCATION:Bjølsen kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976018
+END:VEVENT
+BEGIN:VEVENT
+UID:8976019-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260824T181500Z
+DTEND:20260824T201500Z
+SUMMARY:Oppegård – Lille Tøyen
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976019
+STATUS:CONFIRMED
+LOCATION:Østre Greverud kg.
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976019
+END:VEVENT
+BEGIN:VEVENT
+UID:8976020-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260824T181500Z
+DTEND:20260824T201500Z
+SUMMARY:Monolitten Idrettslag – Furuset 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976020
+STATUS:CONFIRMED
+LOCATION:Ferd stadion (Bygdøy)
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976020
+END:VEVENT
+BEGIN:VEVENT
+UID:8976021-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260824T181500Z
+DTEND:20260824T201500Z
+SUMMARY:Fagerborg 2 – Sterling
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976021
+STATUS:CONFIRMED
+LOCATION:Marienlyst kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976021
+END:VEVENT
+BEGIN:VEVENT
+UID:8976022-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260831T181500Z
+DTEND:20260831T201500Z
+SUMMARY:Jutul – Veitvet
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976022
+STATUS:CONFIRMED
+LOCATION:Skuisletta kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976022
+END:VEVENT
+BEGIN:VEVENT
+UID:8976023-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260831T181500Z
+DTEND:20260831T201500Z
+SUMMARY:Frisk Asker – Fagerborg 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976023
+STATUS:CONFIRMED
+LOCATION:Frisk Arena
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976023
+END:VEVENT
+BEGIN:VEVENT
+UID:8976024-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260831T181500Z
+DTEND:20260831T201500Z
+SUMMARY:Furuset 2 – Oppegård
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976024
+STATUS:CONFIRMED
+LOCATION:Furuset kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976024
+END:VEVENT
+BEGIN:VEVENT
+UID:8976025-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260831T181500Z
+DTEND:20260831T201500Z
+SUMMARY:Lille Tøyen – Sagene 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976025
+STATUS:CONFIRMED
+LOCATION:Caltexløkka
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976025
+END:VEVENT
+BEGIN:VEVENT
+UID:8976026-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260901T181500Z
+DTEND:20260901T201500Z
+SUMMARY:Sterling – Monolitten Idrettslag
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976026
+STATUS:CONFIRMED
+LOCATION:Jordal kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976026
+END:VEVENT
+BEGIN:VEVENT
+UID:8976027-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260907T181500Z
+DTEND:20260907T201500Z
+SUMMARY:Fagerborg 2 – Jutul
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976027
+STATUS:CONFIRMED
+LOCATION:Marienlyst kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976027
+END:VEVENT
+BEGIN:VEVENT
+UID:8976028-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260907T181500Z
+DTEND:20260907T201500Z
+SUMMARY:Veitvet – Lille Tøyen
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976028
+STATUS:CONFIRMED
+LOCATION:Veitvet kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976028
+END:VEVENT
+BEGIN:VEVENT
+UID:8976029-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260907T181500Z
+DTEND:20260907T201500Z
+SUMMARY:Sagene 2 – Furuset 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976029
+STATUS:CONFIRMED
+LOCATION:Bjølsen kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976029
+END:VEVENT
+BEGIN:VEVENT
+UID:8976030-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260907T181500Z
+DTEND:20260907T201500Z
+SUMMARY:Oppegård – Monolitten Idrettslag
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976030
+STATUS:CONFIRMED
+LOCATION:Østre Greverud kg.
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976030
+END:VEVENT
+BEGIN:VEVENT
+UID:8976031-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260908T181500Z
+DTEND:20260908T201500Z
+SUMMARY:Sterling – Frisk Asker
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976031
+STATUS:CONFIRMED
+LOCATION:Jordal kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976031
+END:VEVENT
+BEGIN:VEVENT
+UID:8976032-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260914T181500Z
+DTEND:20260914T201500Z
+SUMMARY:Furuset 2 – Veitvet
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976032
+STATUS:CONFIRMED
+LOCATION:Furuset kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976032
+END:VEVENT
+BEGIN:VEVENT
+UID:8976033-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260914T181500Z
+DTEND:20260914T201500Z
+SUMMARY:Lille Tøyen – Fagerborg 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976033
+STATUS:CONFIRMED
+LOCATION:Caltexløkka
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976033
+END:VEVENT
+BEGIN:VEVENT
+UID:8976034-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260914T181500Z
+DTEND:20260914T201500Z
+SUMMARY:Jutul – Frisk Asker
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976034
+STATUS:CONFIRMED
+LOCATION:Skuisletta kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976034
+END:VEVENT
+BEGIN:VEVENT
+UID:8976035-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260914T181500Z
+DTEND:20260914T201500Z
+SUMMARY:Monolitten Idrettslag – Sagene 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976035
+STATUS:CONFIRMED
+LOCATION:Ferd stadion (Bygdøy)
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976035
+END:VEVENT
+BEGIN:VEVENT
+UID:8976036-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260916T183000Z
+DTEND:20260916T203000Z
+SUMMARY:Sterling – Oppegård
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976036
+STATUS:CONFIRMED
+LOCATION:Jordal kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976036
+END:VEVENT
+BEGIN:VEVENT
+UID:8976037-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260921T181500Z
+DTEND:20260921T201500Z
+SUMMARY:Frisk Asker – Lille Tøyen
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976037
+STATUS:CONFIRMED
+LOCATION:Frisk Arena
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976037
+END:VEVENT
+BEGIN:VEVENT
+UID:8976038-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260921T181500Z
+DTEND:20260921T201500Z
+SUMMARY:Fagerborg 2 – Furuset 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976038
+STATUS:CONFIRMED
+LOCATION:Marienlyst kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976038
+END:VEVENT
+BEGIN:VEVENT
+UID:8976039-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260921T181500Z
+DTEND:20260921T201500Z
+SUMMARY:Veitvet – Monolitten Idrettslag
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976039
+STATUS:CONFIRMED
+LOCATION:Veitvet kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976039
+END:VEVENT
+BEGIN:VEVENT
+UID:8976040-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260921T181500Z
+DTEND:20260921T201500Z
+SUMMARY:Sagene 2 – Oppegård
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976040
+STATUS:CONFIRMED
+LOCATION:Bjølsen kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976040
+END:VEVENT
+BEGIN:VEVENT
+UID:8976041-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20260921T181500Z
+DTEND:20260921T201500Z
+SUMMARY:Jutul – Sterling
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976041
+STATUS:CONFIRMED
+LOCATION:Skuisletta kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976041
+END:VEVENT
+BEGIN:VEVENT
+UID:8976042-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261005T181500Z
+DTEND:20261005T201500Z
+SUMMARY:Oppegård – Veitvet
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976042
+STATUS:CONFIRMED
+LOCATION:Østre Greverud kg.
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976042
+END:VEVENT
+BEGIN:VEVENT
+UID:8976043-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261005T181500Z
+DTEND:20261005T201500Z
+SUMMARY:Monolitten Idrettslag – Fagerborg 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976043
+STATUS:CONFIRMED
+LOCATION:Ferd stadion (Bygdøy)
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976043
+END:VEVENT
+BEGIN:VEVENT
+UID:8976044-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261005T181500Z
+DTEND:20261005T201500Z
+SUMMARY:Furuset 2 – Frisk Asker
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976044
+STATUS:CONFIRMED
+LOCATION:Furuset kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976044
+END:VEVENT
+BEGIN:VEVENT
+UID:8976045-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261005T181500Z
+DTEND:20261005T201500Z
+SUMMARY:Lille Tøyen – Jutul
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976045
+STATUS:CONFIRMED
+LOCATION:Caltexløkka
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976045
+END:VEVENT
+BEGIN:VEVENT
+UID:8976046-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261005T181500Z
+DTEND:20261005T201500Z
+SUMMARY:Sagene 2 – Sterling
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976046
+STATUS:CONFIRMED
+LOCATION:Bjølsen kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976046
+END:VEVENT
+BEGIN:VEVENT
+UID:8976047-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261012T181500Z
+DTEND:20261012T201500Z
+SUMMARY:Jutul – Furuset 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976047
+STATUS:CONFIRMED
+LOCATION:Skuisletta kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976047
+END:VEVENT
+BEGIN:VEVENT
+UID:8976048-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261012T181500Z
+DTEND:20261012T201500Z
+SUMMARY:Frisk Asker – Monolitten Idrettslag
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976048
+STATUS:CONFIRMED
+LOCATION:Frisk Arena
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976048
+END:VEVENT
+BEGIN:VEVENT
+UID:8976049-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261012T181500Z
+DTEND:20261012T201500Z
+SUMMARY:Fagerborg 2 – Oppegård
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976049
+STATUS:CONFIRMED
+LOCATION:Marienlyst kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976049
+END:VEVENT
+BEGIN:VEVENT
+UID:8976050-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261012T181500Z
+DTEND:20261012T201500Z
+SUMMARY:Veitvet – Sagene 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976050
+STATUS:CONFIRMED
+LOCATION:Veitvet kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976050
+END:VEVENT
+BEGIN:VEVENT
+UID:8976051-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261013T181500Z
+DTEND:20261013T201500Z
+SUMMARY:Sterling – Lille Tøyen
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976051
+STATUS:CONFIRMED
+LOCATION:Jordal kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976051
+END:VEVENT
+BEGIN:VEVENT
+UID:8976056-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261019T163000Z
+DTEND:20261019T183000Z
+SUMMARY:Veitvet – Sterling
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976056
+STATUS:CONFIRMED
+LOCATION:Veitvet kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976056
+END:VEVENT
+BEGIN:VEVENT
+UID:8976052-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261019T181500Z
+DTEND:20261019T201500Z
+SUMMARY:Sagene 2 – Fagerborg 2
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976052
+STATUS:CONFIRMED
+LOCATION:Bjølsen kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976052
+END:VEVENT
+BEGIN:VEVENT
+UID:8976053-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261019T181500Z
+DTEND:20261019T201500Z
+SUMMARY:Oppegård – Frisk Asker
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976053
+STATUS:CONFIRMED
+LOCATION:Østre Greverud kg.
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976053
+END:VEVENT
+BEGIN:VEVENT
+UID:8976054-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261019T181500Z
+DTEND:20261019T201500Z
+SUMMARY:Monolitten Idrettslag – Jutul
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976054
+STATUS:CONFIRMED
+LOCATION:Ferd stadion (Bygdøy)
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976054
+END:VEVENT
+BEGIN:VEVENT
+UID:8976055-b@fagerborgbk
+DTSTAMP:20260111T225650Z
+DTSTART:20261019T181500Z
+DTEND:20261019T201500Z
+SUMMARY:Furuset 2 – Lille Tøyen
+DESCRIPTION:Turnering: 7. div. menn avd. 02 - 2026 - Oslo\nKamp: https://www.fotball.no/fotballdata/kamp/?fiksId=8976055
+STATUS:CONFIRMED
+LOCATION:Furuset kunstgress
+URL:https://www.fotball.no/fotballdata/kamp/?fiksId=8976055
+END:VEVENT
+END:VCALENDAR
