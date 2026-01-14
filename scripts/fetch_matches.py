@@ -370,4 +370,82 @@ def build_ics(team_key: str, matches: list[dict], out_path: str, cal_name: str):
         desc_parts = []
         if m.get("tournament"):
             desc_parts.append(f"Turnering: {m['tournament']}")
-        if m.ge
+        if m.get("round"):
+            desc_parts.append(f"Runde: {m['round']}")
+        if m.get("matchUrl"):
+            desc_parts.append(f"URL: {m['matchUrl']}")
+        desc = "\n".join(desc_parts)
+
+        loc = str(m.get("venue", "")).strip()
+        url = str(m.get("matchUrl", "")).strip()
+
+        lines += [
+            "BEGIN:VEVENT",
+            f"UID:{ics_escape(uid)}",
+            f"DTSTAMP:{now}",
+            f"DTSTART:{dtstart}",
+            f"DTEND:{dtend}",
+            f"SUMMARY:{ics_escape(summary)}",
+            f"DESCRIPTION:{ics_escape(desc)}",
+            f"LOCATION:{ics_escape(loc)}" if loc else "LOCATION:",
+            f"URL:{ics_escape(url)}" if url else "URL:",
+            f"STATUS:{ics_status}",
+            "END:VEVENT",
+        ]
+
+    lines.append("END:VCALENDAR")
+    with open(out_path, "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(lines) + "\n")
+
+
+def main():
+    ensure_dirs()
+
+    # ✅ 1) Hent Fagerborg-kamper (lag-sider)
+    a_team_url = TEAM_MATCHES_URL.format(fiksid=A_TEAM_FIKS_ID)
+    b_team_url = TEAM_MATCHES_URL.format(fiksid=B_TEAM_FIKS_ID)
+
+    a_team_all = parse_matches_from_page(a_team_url, SEASON_YEAR)
+    b_team_all = parse_matches_from_page(b_team_url, SEASON_YEAR)
+
+    a_matches = filter_only_fagerborg(a_team_all)
+    b_matches = filter_only_fagerborg(b_team_all)
+
+    # ✅ 2) Hent “Alle lag” (turnerings-sider)
+    a_div_url = TOURN_MATCHES_URL.format(fiksid=A_TOURN_FIKS_ID)
+    b_div_url = TOURN_MATCHES_URL.format(fiksid=B_TOURN_FIKS_ID)
+
+    a_div_matches = parse_matches_from_page(a_div_url, SEASON_YEAR)
+    b_div_matches = parse_matches_from_page(b_div_url, SEASON_YEAR)
+
+    # Guard: hvis vi av en eller annen grunn ikke finner Fagerborg-kampene i lag-lista,
+    # så er det bedre å skrive tomt for team enn å skrive feil lag (UI håndterer tomt pent).
+    out = {
+        "updatedAt": utc_now_str(),
+        "a": {
+            "fiksId": A_TEAM_FIKS_ID,
+            "teamName": "Fagerborg",
+            "badge": A_BADGE,
+            "matches": a_matches,
+            "allMatches": a_div_matches,
+        },
+        "b": {
+            "fiksId": B_TEAM_FIKS_ID,
+            "teamName": "Fagerborg",
+            "badge": B_BADGE,
+            "matches": b_matches,
+            "allMatches": b_div_matches,
+        }
+    }
+
+    with open(os.path.join(DATA_DIR, "matches.json"), "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=2)
+
+    # ICS:
+    build_ics("a", a_matches, os.path.join(DATA_DIR, "a.ics"), "Fagerborg BK A-lag (2026)")
+    build_ics("b", b_matches, os.path.join(DATA_DIR, "b.ics"), "Fagerborg BK B-lag (2026)")
+    build_ics("all", (a_matches + b_matches), os.path.join(DATA_DIR, "all.ics"), "Fagerborg BK (A+B) (2026)")
+
+
+if __name__ == "__main__":
+    main()
