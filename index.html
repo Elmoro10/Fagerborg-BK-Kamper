@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Terminliste – Fagerborg BK</title>
+  <title>Kamper – Fagerborg BK</title>
 
   <style>
     :root{
@@ -360,14 +360,6 @@
       letter-spacing:-.01em;
       font-size:16px;
     }
-
-    @media (max-width: 420px){
-      :root{ --frontLogo: 70px; }
-      .fixture-teams{ grid-template-columns: 1fr 46px 1fr; }
-      .vmark{ font-size:24px; }
-      .fixture-top h2{ font-size:22px; }
-      .meta-left .date, .meta-left .time{ font-size:17px; }
-    }
   </style>
 </head>
 
@@ -377,19 +369,19 @@
   </div>
 
   <script>
-    function repoBaseUrl(){
-      const p = location.pathname;
-      const root = p.endsWith("/") ? p : p.substring(0, p.lastIndexOf("/") + 1);
-      return location.origin + root;
+    // ✅ Robust base: always ends with "/"
+    function basePath(){
+      return location.origin + location.pathname.replace(/\/[^\/]*$/, "/");
     }
-    function toAbsMaybe(u){
+    function abs(u){
       const s = String(u || "").trim();
       if (!s) return "";
-      if (s.startsWith("http://")) return "https://" + s.slice("http://".length);
+      if (s.startsWith("http://")) return "https://" + s.slice(7);
       if (s.startsWith("//")) return "https:" + s;
-      if (s.startsWith("https://") || s.startsWith("http://")) return s;
-      return repoBaseUrl() + s.replace(/^\//, "");
+      if (s.startsWith("https://")) return s;
+      return basePath() + s.replace(/^\//,"");
     }
+
     function parseKickoffMs(m){
       const t = Date.parse(m.kickoff);
       return Number.isFinite(t) ? t : NaN;
@@ -408,7 +400,7 @@
       if (isFinished(m)) return { text:"Spilt", cls:"chip ok" };
       return { text:"Kommende", cls:"chip" };
     }
-    function isFagerborgMatch(teamObj, m){
+    function isFagerborgMatch(m){
       const home = String(m.homeTeam || "").toLowerCase();
       const away = String(m.awayTeam || "").toLowerCase();
       return home.includes("fagerborg") || away.includes("fagerborg");
@@ -417,8 +409,8 @@
       try{ return u ? new URL(u, location.href).href : ""; }catch{ return ""; }
     }
     function imgNode(url, cls){
-      const abs = toAbsMaybe(url);
-      if (!abs){
+      const u = abs(url);
+      if (!u){
         const sp = document.createElement("span");
         sp.className = cls + " fallback";
         return sp;
@@ -427,7 +419,7 @@
       img.className = cls;
       img.loading = "lazy";
       img.alt = "";
-      img.src = abs;
+      img.src = u;
       img.onerror = () => {
         const sp = document.createElement("span");
         sp.className = cls + " fallback";
@@ -451,22 +443,19 @@
       }
     }
 
-    function matchRow(teamObj, m){
+    function matchRow(m){
       const row = document.createElement("div");
-      row.className = "match" + (isFagerborgMatch(teamObj, m) ? " our" : "");
+      row.className = "match" + (isFagerborgMatch(m) ? " our" : "");
 
       const when = document.createElement("div");
       when.className = "when";
-
       const dt = document.createElement("div");
       dt.className = "dt";
       dt.textContent = fmtListNo(m.kickoff);
-
       const venue = document.createElement("div");
       venue.className = "venue";
       venue.textContent = String(m.venue || "");
       venue.title = String(m.venue || "");
-
       when.append(dt, venue);
 
       const versus = document.createElement("div");
@@ -494,16 +483,13 @@
 
       const right = document.createElement("div");
       right.className = "rightbox";
-
       const sc = document.createElement("div");
       sc.className = "score";
       sc.textContent = scoreText(m);
-
       const chip = statusChip(m);
       const ch = document.createElement("div");
       ch.className = chip.cls;
       ch.textContent = chip.text;
-
       right.append(sc, ch);
 
       row.append(when, versus, right);
@@ -512,10 +498,7 @@
       if (u){
         row.style.cursor = "pointer";
         row.title = "Åpne kamp på fotball.no";
-        row.addEventListener("click", () => {
-          if (window.getSelection && String(window.getSelection()).length > 0) return;
-          window.open(u, "_blank", "noopener");
-        });
+        row.addEventListener("click", () => window.open(u, "_blank", "noopener"));
       }
       return row;
     }
@@ -550,7 +533,6 @@
         return x;
       }
 
-      // ✅ “Alle lag” viser turneringslisten (allMatches)
       all.sort((a,b) => getT(a) - getT(b));
       return all;
     }
@@ -581,25 +563,21 @@
       tabs.className = "tabs";
       const wrap = document.createElement("div");
       wrap.className = "tab-wrap";
-      wrap.setAttribute("role", "tablist");
 
       const btnUpcoming = document.createElement("button");
       btnUpcoming.className = "tab";
-      btnUpcoming.setAttribute("role","tab");
       btnUpcoming.setAttribute("aria-selected","true");
       btnUpcoming.type = "button";
       btnUpcoming.textContent = "Kommende";
 
       const btnPlayed = document.createElement("button");
       btnPlayed.className = "tab";
-      btnPlayed.setAttribute("role","tab");
       btnPlayed.setAttribute("aria-selected","false");
       btnPlayed.type = "button";
       btnPlayed.textContent = "Siste spilte";
 
       const btnAll = document.createElement("button");
       btnAll.className = "tab";
-      btnAll.setAttribute("role","tab");
       btnAll.setAttribute("aria-selected","false");
       btnAll.type = "button";
       btnAll.textContent = "Alle lag";
@@ -635,7 +613,7 @@
           list.appendChild(d);
           return;
         }
-        ms.forEach(m => list.appendChild(matchRow(teamObj, m)));
+        ms.forEach(m => list.appendChild(matchRow(m)));
       }
 
       btnUpcoming.addEventListener("click", () => setSelected("upcoming"));
@@ -646,129 +624,14 @@
       return card;
     }
 
-    function formatFrontMeta(m, fallbackTournament){
-      const d = new Date(m.kickoff);
-      const day = d.toLocaleDateString('nb-NO', { weekday:'short' }).replace('.', '').toUpperCase();
-      const date = d.toLocaleDateString('nb-NO', { day:'2-digit', month:'2-digit', year:'numeric' });
-      const time = d.toLocaleTimeString('nb-NO', { hour:'2-digit', minute:'2-digit' });
-
-      const tournament = String(m.tournament || fallbackTournament || "").trim();
-      const venue = String(m.venue || "").trim();
-      return { day, date, time, tournament, venue };
-    }
-
-    function makeFrontAOnly(teamObj){
-      const card = document.createElement("div");
-      card.className = "card";
-      const pad = document.createElement("div");
-      pad.className = "front-pad";
-
-      const fixture = document.createElement("div");
-      fixture.className = "fixture";
-
-      const top = document.createElement("div");
-      top.className = "fixture-top";
-      const h2 = document.createElement("h2");
-      h2.textContent = "Neste kamp";
-      const pill = document.createElement("div");
-      pill.className = "fixture-pill";
-      pill.textContent = "Kommende";
-      top.append(h2, pill);
-      fixture.appendChild(top);
-
-      const ms = Array.isArray(teamObj?.matches) ? teamObj.matches.slice() : [];
-      const now = Date.now();
-
-      const next = ms
-        .map(m => ({ m, t: parseKickoffMs(m) }))
-        .filter(x => Number.isFinite(x.t))
-        .filter(x => String(x.m.status || "").toUpperCase() !== "CANCELLED")
-        .filter(x => x.t >= now)
-        .sort((a,b) => a.t - b.t)[0]?.m || null;
-
-      if (!next){
-        const wrap = document.createElement("div");
-        wrap.style.padding = "14px";
-        const emp = document.createElement("div");
-        emp.className = "empty";
-        emp.textContent = "Ingen kamp funnet.";
-        wrap.appendChild(emp);
-        fixture.appendChild(wrap);
-      } else {
-        const { day, date, time, tournament, venue } = formatFrontMeta(next, teamObj?.badge || "2026");
-
-        const meta = document.createElement("div");
-        meta.className = "fixture-meta";
-
-        const left = document.createElement("div");
-        left.className = "meta-left";
-        left.innerHTML = `
-          <div class="day">${day}</div>
-          <div class="date">${date}</div>
-          <div class="time">${time}</div>
-        `;
-
-        const right = document.createElement("div");
-        right.className = "meta-right";
-        right.innerHTML = `
-          <div class="comp">${tournament || " "}</div>
-          <div class="place">${venue || " "}</div>
-        `;
-
-        meta.append(left, right);
-        fixture.appendChild(meta);
-
-        const teams = document.createElement("div");
-        teams.className = "fixture-teams";
-
-        const home = document.createElement("div");
-        home.className = "ft";
-        home.append(
-          imgNode(next.homeLogoUrl, "biglogo"),
-          Object.assign(document.createElement("div"), { className:"tname", title:String(next.homeTeam||""), textContent:String(next.homeTeam||"Ukjent") })
-        );
-
-        const v = document.createElement("div");
-        v.className = "vmark";
-        v.textContent = "V";
-
-        const away = document.createElement("div");
-        away.className = "ft";
-        away.append(
-          imgNode(next.awayLogoUrl, "biglogo"),
-          Object.assign(document.createElement("div"), { className:"tname", title:String(next.awayTeam||""), textContent:String(next.awayTeam||"Ukjent") })
-        );
-
-        teams.append(home, v, away);
-        fixture.appendChild(teams);
-      }
-
-      const actions = document.createElement("div");
-      actions.className = "fixture-actions";
-      const btn = document.createElement("a");
-      btn.className = "fixture-btn";
-      btn.href = "https://www.fagerborgbk.no/next/p/10973/terminlister";
-      btn.target = "_top";
-      btn.rel = "noopener";
-      btn.textContent = "Se alle kamper";
-      actions.appendChild(btn);
-      fixture.appendChild(actions);
-
-      pad.appendChild(fixture);
-      card.appendChild(pad);
-      return card;
-    }
-
     function applyMode(){
       const params = new URLSearchParams(location.search);
       const view = (params.get("view") || "").toLowerCase();
-
       if (view === "front"){
         document.body.classList.add("front");
         return { view:"front", team:"a" };
       }
       document.body.classList.remove("front");
-
       const team = (params.get("team") || "both").toLowerCase();
       return { view:"", team };
     }
@@ -793,12 +656,6 @@
       const aObj = data?.a || null;
       const bObj = data?.b || null;
 
-      if (mode.view === "front"){
-        grid.className = "grid single";
-        grid.appendChild(makeFrontAOnly(aObj));
-        return;
-      }
-
       if (mode.team === "a"){
         grid.className = "grid single";
         grid.appendChild(makeCard("a", aObj, "5. divisjon (2026)"));
@@ -817,7 +674,7 @@
       const mode = applyMode();
       renderLoading(grid);
 
-      const url = repoBaseUrl() + "data/matches.json?ts=" + Date.now();
+      const url = basePath() + "data/matches.json?ts=" + Date.now();
 
       try{
         const res = await fetch(url, { cache:"no-store" });
