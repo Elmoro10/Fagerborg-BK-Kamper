@@ -15,7 +15,6 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,9 +31,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      - name: Run scraper
+      # ✅ IMPORTANT: do not fail the workflow if scraper fails
+      - name: Run scraper (never fail job)
         run: |
-          python scripts/fetch_matches.py
+          python -u scripts/fetch_matches.py || echo "Scraper failed (kept previous data)."
 
       - name: Commit and push if changed
         run: |
