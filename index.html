@@ -18,7 +18,6 @@
       --radius:14px;
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
 
-      /* Fagerborg highlight (samme “our” stil) */
       --our-bg: rgba(22,163,74,.12);
       --our-text: #16a34a;
 
@@ -30,14 +29,17 @@
       --chipBadBg: rgba(220,38,38,.12);
       --chipBadText: #dc2626;
 
-      /* Match-list layout */
-      --datew: 150px;
-      --scorew: 70px;
-
       /* Tabs */
       --tabBg: #f3f4f6;
       --tabBorder: #e5e7eb;
       --tabActive: #ffffff;
+
+      /* Match list layout */
+      --datew: 150px;
+      --scorew: 70px;
+
+      /* Front */
+      --frontLogo: 76px;
     }
 
     *{ box-sizing:border-box; }
@@ -73,6 +75,7 @@
       min-width:0;
     }
 
+    /* Header (brukes ikke i front) */
     .card-head{
       display:flex;
       align-items:center;
@@ -82,7 +85,6 @@
       border-bottom:1px solid var(--line);
       background:var(--head);
     }
-
     .card-title{
       font-weight:900;
       font-size:18px;
@@ -92,7 +94,6 @@
       gap:10px;
       min-width:0;
     }
-
     .team-mark{
       width:10px;
       height:22px;
@@ -101,7 +102,6 @@
       box-shadow: inset 0 0 0 1px rgba(15,23,42,.06);
       flex:0 0 auto;
     }
-
     .badge{
       font-size:12px;
       color:var(--muted);
@@ -112,10 +112,8 @@
       white-space:nowrap;
     }
 
-    /* Tabs */
-    .tabs{
-      padding:10px 12px 0;
-    }
+    /* Tabs (ikke i front) */
+    .tabs{ padding:10px 12px 0; }
     .tab-wrap{
       display:flex;
       gap:6px;
@@ -165,10 +163,7 @@
 
     @media (max-width: 520px){
       :root{ --datew: 1fr; --scorew: 1fr; }
-      .match{
-        grid-template-columns: 1fr;
-        gap:8px;
-      }
+      .match{ grid-template-columns: 1fr; gap:8px; }
     }
 
     .match.our{
@@ -183,12 +178,7 @@
       background: var(--our-text);
     }
 
-    .when{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-      min-width:0;
-    }
+    .when{ display:flex; flex-direction:column; gap:4px; min-width:0; }
     .dt{
       font-weight:900;
       font-size:13px;
@@ -206,19 +196,8 @@
       text-overflow:ellipsis;
     }
 
-    .versus{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-    .team{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      min-width:0;
-      flex: 1 1 0;
-    }
+    .versus{ display:flex; align-items:center; gap:10px; min-width:0; }
+    .team{ display:flex; align-items:center; gap:8px; min-width:0; flex: 1 1 0; }
     .team.right{ justify-content:flex-end; }
     .name{
       font-weight:900;
@@ -238,8 +217,7 @@
     }
 
     .logo{
-      width:22px;
-      height:22px;
+      width:22px; height:22px;
       border-radius:999px;
       border:1px solid var(--line);
       background:#fff;
@@ -251,15 +229,8 @@
       border:1px solid #d1d5db;
     }
 
-    .rightbox{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:6px;
-    }
-    @media (max-width: 520px){
-      .rightbox{ align-items:flex-start; }
-    }
+    .rightbox{ display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+    @media (max-width: 520px){ .rightbox{ align-items:flex-start; } }
 
     .score{
       font-weight:900;
@@ -319,41 +290,41 @@
     }
 
     /* ============================================================
-       ✅ FRONT / COMPACT MODE (view=front)
-       Arsenal-ish: stor "neste kamp", knappen "Se alle kamper",
-       og enkel "Sist spilte" under.
+       FRONT (view=front) – kun stor "Neste kamp" (A-laget)
+       Arsenal-ish: dato/tid venstre, turnering/sted høyre
        ============================================================ */
     body.front .wrap{ max-width: 680px; }
+    body.front .grid{ grid-template-columns: 1fr !important; }
+    body.front .card{ overflow: hidden; }
 
-    .front{
-      padding:10px 12px 12px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
+    .front-pad{
+      padding:12px;
     }
 
     .fixture{
       border:1px solid var(--line);
-      border-radius:12px;
+      border-radius:14px;
       background:#fff;
       overflow:hidden;
     }
 
-    .fixture-head{
+    /* "Neste kamp" overskrift */
+    .fixture-top{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      padding:10px;
+      padding:12px 12px 10px;
       border-bottom:1px solid var(--line);
       background:#fff;
     }
-    .fixture-title{
-      font-weight:900;
-      font-size:18px;
-      letter-spacing:-.01em;
+    .fixture-top h2{
+      margin:0;
+      font-size:22px;
+      font-weight:1000;
+      letter-spacing:-.02em;
     }
-    .fixture-chip{
+    .fixture-pill{
       font-size:12px;
       color:var(--muted);
       border:1px solid var(--line);
@@ -361,86 +332,124 @@
       padding:6px 10px;
       border-radius:999px;
       white-space:nowrap;
+      font-weight:900;
     }
 
+    /* Meta-linje som Arsenal: venstre/høyre */
     .fixture-meta{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      gap:10px;
-      padding:10px;
+      gap:12px;
+      padding:12px;
       border-bottom:1px solid var(--line);
       background:#fff;
     }
-    .fixture-meta .left{
-      font-weight:900;
-      letter-spacing:-.01em;
-    }
-    .fixture-meta .right{
-      font-weight:900;
+
+    .meta-left .day{
+      font-weight:1000;
+      letter-spacing:.06em;
+      font-size:13px;
       color:var(--muted);
-      white-space:nowrap;
+      text-transform:uppercase;
+      margin-bottom:4px;
     }
-    .fixture-sub{
-      padding:0 10px 10px;
+    .meta-left .date{
+      font-weight:1000;
+      font-size:18px;
+      letter-spacing:-.02em;
+      line-height:1.1;
+    }
+
+    .meta-right{
+      text-align:right;
+      min-width: 40%;
+    }
+    .meta-right .comp{
+      font-weight:1000;
+      font-size:13px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:4px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .meta-right .place{
+      font-weight:1000;
+      font-size:14px;
+      letter-spacing:-.01em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    /* Kickoff-linje */
+    .fixture-kick{
+      padding:0 12px 12px;
       color:var(--muted);
       font-size:12px;
       border-bottom:1px solid var(--line);
       background:#fff;
     }
-    .fixture-sub b{
+    .fixture-kick b{
       color:var(--text);
-      font-weight:900;
+      font-weight:1000;
+      letter-spacing:.06em;
     }
 
+    /* Logo/teams */
     .fixture-teams{
-      padding:14px 10px 10px;
+      padding:16px 12px 10px;
       display:grid;
-      grid-template-columns: 1fr 50px 1fr;
+      grid-template-columns: 1fr 60px 1fr;
       gap:10px;
       align-items:center;
       background:#fff;
     }
-    .fixture-team{
+    .ft{
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:8px;
+      gap:10px;
       min-width:0;
     }
-    .fixture-team .biglogo{
-      width:64px;
-      height:64px;
+    .biglogo{
+      width:var(--frontLogo);
+      height:var(--frontLogo);
       border-radius:999px;
       border:1px solid var(--line);
       background:#fff;
       object-fit:contain;
     }
-    .fixture-team .biglogo.fallback{
+    .biglogo.fallback{
       background:#e5e7eb;
       border:1px solid #d1d5db;
     }
-    .fixture-team .tname{
-      font-weight:900;
-      letter-spacing:-.01em;
+    .ft .tname{
+      font-weight:1000;
+      letter-spacing:-.02em;
       text-align:center;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
       max-width:100%;
+      font-size:16px;
     }
-    .fixture-v{
+    .vmark{
       text-align:center;
-      font-weight:900;
-      font-size:22px;
+      font-weight:1000;
+      font-size:26px;
       color:var(--muted);
+      letter-spacing:.06em;
     }
 
+    /* CTA knapp nederst (kun denne) */
     .fixture-actions{
-      padding:12px 10px 10px;
+      padding:12px;
       background:#fff;
       display:flex;
-      gap:10px;
       justify-content:center;
     }
     .fixture-btn{
@@ -448,63 +457,25 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      padding:12px 14px;
+      padding:14px 16px;
       border-radius:999px;
       border:1px solid var(--line);
       background:#fff;
       color:var(--text);
-      font-weight:900;
+      font-weight:1000;
       cursor:pointer;
       text-decoration:none;
+      letter-spacing:-.01em;
+      font-size:16px;
     }
     .fixture-btn:hover{ filter: brightness(.98); }
 
-    .lastbox{
-      border:1px solid var(--line);
-      border-radius:12px;
-      background:#fff;
-      overflow:hidden;
-    }
-    .last-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:10px;
-      border-bottom:1px solid var(--line);
-      background:#fff;
-    }
-    .last-title{
-      font-weight:900;
-      font-size:18px;
-      letter-spacing:-.01em;
-    }
-    .last-chip{
-      font-size:12px;
-      color:var(--muted);
-      border:1px solid var(--line);
-      background:#fff;
-      padding:6px 10px;
-      border-radius:999px;
-      white-space:nowrap;
-    }
-    .last-body{
-      padding:10px;
-      background:#fff;
-    }
-    .last-empty{
-      padding:12px;
-      border-radius:12px;
-      border:1px dashed #d1d5db;
-      background:#fff;
-      color:var(--muted);
-      font-size:14px;
-    }
-
     @media (max-width: 420px){
-      .fixture-team .biglogo{ width:54px; height:54px; }
-      .fixture-v{ font-size:20px; }
+      :root{ --frontLogo: 66px; }
+      .fixture-teams{ grid-template-columns: 1fr 46px 1fr; }
+      .vmark{ font-size:24px; }
+      .fixture-top h2{ font-size:20px; }
+      .meta-left .date{ font-size:17px; }
     }
   </style>
 </head>
@@ -527,27 +498,19 @@
       return location.origin + root;
     }
 
-    function toAbsMaybe(u){
+    function normalizeUrl(u){
       const s = String(u || "").trim();
+      if (!s) return "";
+      if (s.startsWith("//")) return "https:" + s;
+      if (s.startsWith("http://")) return "https://" + s.slice("http://".length);
+      return s;
+    }
+
+    function toAbsMaybe(u){
+      const s = normalizeUrl(u);
       if (!s) return "";
       if (s.startsWith("http://") || s.startsWith("https://")) return s;
       return repoBaseUrl() + s.replace(/^\//, "");
-    }
-
-    function fmtNo(dtIso){
-      try{
-        const d = new Date(dtIso);
-        return d.toLocaleString('nb-NO', {
-          weekday:'short',
-          year:'numeric',
-          month:'2-digit',
-          day:'2-digit',
-          hour:'2-digit',
-          minute:'2-digit'
-        }).replace(',', '');
-      }catch{
-        return "Ukjent tid";
-      }
     }
 
     function parseKickoffMs(m){
@@ -588,44 +551,44 @@
       }
     }
 
-    function logoNode(url){
+    function logoNode(url, cls){
       const abs = toAbsMaybe(url);
       if (!abs){
         const sp = document.createElement("span");
-        sp.className = "logo fallback";
+        sp.className = cls + " fallback";
         return sp;
       }
       const img = document.createElement("img");
-      img.className = "logo";
+      img.className = cls;
       img.loading = "lazy";
       img.alt = "";
       img.src = abs;
+
+      /* Hjelper ofte hvis host blokkerer referrer/hotlink */
+      img.referrerPolicy = "no-referrer";
+
       img.onerror = () => {
         const sp = document.createElement("span");
-        sp.className = "logo fallback";
+        sp.className = cls + " fallback";
         img.replaceWith(sp);
       };
       return img;
     }
 
-    function bigLogoNode(url){
-      const abs = toAbsMaybe(url);
-      if (!abs){
-        const sp = document.createElement("span");
-        sp.className = "biglogo fallback";
-        return sp;
+    function fmtListNo(dtIso){
+      try{
+        const d = new Date(dtIso);
+        return d.toLocaleString('nb-NO', {
+          weekday:'short',
+          year:'numeric',
+          month:'2-digit',
+          day:'2-digit',
+          hour:'2-digit',
+          minute:'2-digit'
+        }).replace(',', '');
+      }catch{
+        return "Ukjent tid";
       }
-      const img = document.createElement("img");
-      img.className = "biglogo";
-      img.loading = "lazy";
-      img.alt = "";
-      img.src = abs;
-      img.onerror = () => {
-        const sp = document.createElement("span");
-        sp.className = "biglogo fallback";
-        img.replaceWith(sp);
-      };
-      return img;
     }
 
     function matchRow(teamObj, m){
@@ -637,7 +600,7 @@
 
       const dt = document.createElement("div");
       dt.className = "dt";
-      dt.textContent = fmtNo(m.kickoff);
+      dt.textContent = fmtListNo(m.kickoff);
 
       const venue = document.createElement("div");
       venue.className = "venue";
@@ -652,8 +615,8 @@
       const home = document.createElement("div");
       home.className = "team";
       home.append(
-        logoNode(m.homeLogoUrl),
-        Object.assign(document.createElement("div"), { className:"name", title:String(m.homeTeam||"") , textContent:String(m.homeTeam||"Ukjent") })
+        logoNode(m.homeLogoUrl, "logo"),
+        Object.assign(document.createElement("div"), { className:"name", title:String(m.homeTeam||""), textContent:String(m.homeTeam||"Ukjent") })
       );
 
       const vs = document.createElement("div");
@@ -663,8 +626,8 @@
       const away = document.createElement("div");
       away.className = "team right";
       away.append(
-        Object.assign(document.createElement("div"), { className:"name", title:String(m.awayTeam||"") , textContent:String(m.awayTeam||"Ukjent") }),
-        logoNode(m.awayLogoUrl)
+        Object.assign(document.createElement("div"), { className:"name", title:String(m.awayTeam||""), textContent:String(m.awayTeam||"Ukjent") }),
+        logoNode(m.awayLogoUrl, "logo")
       );
 
       versus.append(home, vs, away);
@@ -698,9 +661,6 @@
       return row;
     }
 
-    // ✅ KRAV:
-    // - Kommende / Siste spilte = bare Fagerborg
-    // - Alle lag = hele turnering/avdeling
     function filterMatches(teamObj, mode){
       const ms = Array.isArray(teamObj?.matches) ? teamObj.matches.slice() : [];
       const now = Date.now();
@@ -734,7 +694,6 @@
         return x;
       }
 
-      // "all" -> alle lag
       ms.sort((a,b) => getT(a) - getT(b));
       return ms;
     }
@@ -761,7 +720,6 @@
       head.append(left, badge);
       card.appendChild(head);
 
-      // Tabs
       const tabs = document.createElement("div");
       tabs.className = "tabs";
       const wrap = document.createElement("div");
@@ -831,217 +789,157 @@
       return card;
     }
 
-    function frontListUrl(teamKey){
-      // Lenke til samme side uten view=front (terminliste)
-      const base = repoBaseUrl() + "index.html";
-      return `${base}?team=${encodeURIComponent(teamKey)}&v=${Date.now()}`;
+    function formatFrontMeta(m, fallbackTournament){
+      const d = new Date(m.kickoff);
+      const day = d.toLocaleDateString('nb-NO', { weekday:'short' }).replace('.', '').toUpperCase();
+      const date = d.toLocaleDateString('nb-NO', { day:'2-digit', month:'2-digit', year:'numeric' });
+      const time = d.toLocaleTimeString('nb-NO', { hour:'2-digit', minute:'2-digit' });
+
+      const tournament = String(m.tournament || fallbackTournament || "").trim();
+      const venue = String(m.venue || "").trim();
+
+      return { day, date, time, tournament, venue };
     }
 
-    function makeFrontCard(teamKey, teamObj){
-      const title = teamKey === "a" ? "A-Laget" : "B-Laget";
-      const badgeText = String(teamObj?.tournament || "2026");
-
+    function makeFrontAOnly(teamObj){
       const card = document.createElement("div");
       card.className = "card";
 
-      const head = document.createElement("div");
-      head.className = "card-head";
+      const pad = document.createElement("div");
+      pad.className = "front-pad";
 
-      const left = document.createElement("div");
-      left.className = "card-title";
-      left.append(Object.assign(document.createElement("span"), { className:"team-mark" }));
-      left.append(Object.assign(document.createElement("span"), { textContent: title }));
-
-      const badge = document.createElement("div");
-      badge.className = "badge";
-      badge.textContent = badgeText;
-
-      head.append(left, badge);
-      card.appendChild(head);
-
-      const front = document.createElement("div");
-      front.className = "front";
-
-      const msAll = Array.isArray(teamObj?.matches) ? teamObj.matches.slice() : [];
-      const now = Date.now();
-
-      const fbk = msAll
-        .map(m => ({ m, t: parseKickoffMs(m) }))
-        .filter(x => Number.isFinite(x.t))
-        .filter(x => isFagerborgMatch(teamObj, x.m));
-
-      const next = fbk
-        .filter(x => x.t >= now && String(x.m.status || "").toUpperCase() !== "CANCELLED")
-        .sort((a,b) => a.t - b.t)[0]?.m || null;
-
-      const last = fbk
-        .filter(x => x.t < now)
-        .sort((a,b) => b.t - a.t)[0]?.m || null;
-
-      // ---- Neste kamp (Arsenal-ish) ----
       const fixture = document.createElement("div");
       fixture.className = "fixture";
 
-      const fHead = document.createElement("div");
-      fHead.className = "fixture-head";
-      fHead.append(
-        Object.assign(document.createElement("div"), { className:"fixture-title", textContent:"Neste kamp" }),
-        Object.assign(document.createElement("div"), { className:"fixture-chip", textContent:"Kommende" })
-      );
-      fixture.appendChild(fHead);
+      // Title row
+      const top = document.createElement("div");
+      top.className = "fixture-top";
+      const h2 = document.createElement("h2");
+      h2.textContent = "Neste kamp";
+      const pill = document.createElement("div");
+      pill.className = "fixture-pill";
+      pill.textContent = "Kommende";
+      top.append(h2, pill);
+      fixture.appendChild(top);
+
+      // Find next A-match (kun Fagerborg)
+      const ms = Array.isArray(teamObj?.matches) ? teamObj.matches.slice() : [];
+      const now = Date.now();
+      const fbk = ms
+        .map(m => ({ m, t: parseKickoffMs(m) }))
+        .filter(x => Number.isFinite(x.t))
+        .filter(x => isFagerborgMatch(teamObj, x.m))
+        .filter(x => String(x.m.status || "").toUpperCase() !== "CANCELLED");
+
+      const next = fbk
+        .filter(x => x.t >= now)
+        .sort((a,b) => a.t - b.t)[0]?.m || null;
 
       if (!next){
-        const bb = document.createElement("div");
-        bb.style.padding = "10px";
+        const wrap = document.createElement("div");
+        wrap.style.padding = "12px";
         const emp = document.createElement("div");
-        emp.className = "last-empty";
+        emp.className = "empty";
         emp.textContent = "Ingen kamp funnet.";
-        bb.appendChild(emp);
-        fixture.appendChild(bb);
+        wrap.appendChild(emp);
+        fixture.appendChild(wrap);
       } else {
-        const d = new Date(next.kickoff);
-        const day = d.toLocaleDateString('nb-NO', { weekday:'short', day:'2-digit', month:'2-digit', year:'numeric' });
-        const time = d.toLocaleTimeString('nb-NO', { hour:'2-digit', minute:'2-digit' });
+        const { day, date, time, tournament, venue } = formatFrontMeta(next, teamObj?.tournament || "2026");
 
         const meta = document.createElement("div");
         meta.className = "fixture-meta";
-        meta.append(
-          Object.assign(document.createElement("div"), { className:"left", textContent: String(day).toUpperCase() }),
-          Object.assign(document.createElement("div"), { className:"right", textContent: String(next.tournament || badgeText).toLowerCase() })
-        );
+
+        const left = document.createElement("div");
+        left.className = "meta-left";
+        left.innerHTML = `
+          <div class="day">${esc(day)}</div>
+          <div class="date">${esc(date)}</div>
+        `;
+
+        const right = document.createElement("div");
+        right.className = "meta-right";
+        right.innerHTML = `
+          <div class="comp">${esc(tournament || " ")}</div>
+          <div class="place">${esc(venue || " ")}</div>
+        `;
+
+        meta.append(left, right);
         fixture.appendChild(meta);
 
-        const sub = document.createElement("div");
-        sub.className = "fixture-sub";
-        const venue = String(next.venue || "").trim();
-        sub.innerHTML = `<b>KICKOFF</b> – ${esc(time)}${venue ? " · " + esc(venue) : ""}`;
-        fixture.appendChild(sub);
+        const kick = document.createElement("div");
+        kick.className = "fixture-kick";
+        kick.innerHTML = `<b>KICKOFF</b> – ${esc(time)}`;
+        fixture.appendChild(kick);
 
         const teams = document.createElement("div");
         teams.className = "fixture-teams";
 
-        const leftTeam = document.createElement("div");
-        leftTeam.className = "fixture-team";
-        leftTeam.append(
-          bigLogoNode(next.homeLogoUrl),
+        const home = document.createElement("div");
+        home.className = "ft";
+        home.append(
+          logoNode(next.homeLogoUrl, "biglogo"),
           Object.assign(document.createElement("div"), { className:"tname", title:String(next.homeTeam||""), textContent:String(next.homeTeam||"Ukjent") })
         );
 
         const v = document.createElement("div");
-        v.className = "fixture-v";
+        v.className = "vmark";
         v.textContent = "V";
 
-        const rightTeam = document.createElement("div");
-        rightTeam.className = "fixture-team";
-        rightTeam.append(
-          bigLogoNode(next.awayLogoUrl),
+        const away = document.createElement("div");
+        away.className = "ft";
+        away.append(
+          logoNode(next.awayLogoUrl, "biglogo"),
           Object.assign(document.createElement("div"), { className:"tname", title:String(next.awayTeam||""), textContent:String(next.awayTeam||"Ukjent") })
         );
 
-        teams.append(leftTeam, v, rightTeam);
+        teams.append(home, v, away);
         fixture.appendChild(teams);
       }
 
-      // ---- Knapp: "Se alle kamper" (i stedet for News & video) ----
+      // Only button at bottom -> external terminliste
       const actions = document.createElement("div");
       actions.className = "fixture-actions";
-
-      const a = document.createElement("a");
-      a.className = "fixture-btn";
-      a.href = frontListUrl(teamKey);
-      a.textContent = "Se alle kamper";
-      actions.appendChild(a);
-
+      const btn = document.createElement("a");
+      btn.className = "fixture-btn";
+      btn.href = "https://www.fagerborgbk.no/next/p/10973/terminlister";
+      btn.target = "_top";
+      btn.rel = "noopener";
+      btn.textContent = "Se alle kamper";
+      actions.appendChild(btn);
       fixture.appendChild(actions);
-      front.appendChild(fixture);
 
-      // ---- Sist spilte (enkelt, som på ditt nåværende bilde) ----
-      const lastBox = document.createElement("div");
-      lastBox.className = "lastbox";
-
-      const lHead = document.createElement("div");
-      lHead.className = "last-head";
-      lHead.append(
-        Object.assign(document.createElement("div"), { className:"last-title", textContent:"Sist spilte" }),
-        Object.assign(document.createElement("div"), { className:"last-chip", textContent:"Siste" })
-      );
-      lastBox.appendChild(lHead);
-
-      const lBody = document.createElement("div");
-      lBody.className = "last-body";
-
-      if (!last){
-        const emp = document.createElement("div");
-        emp.className = "last-empty";
-        emp.textContent = "Ingen kamp funnet.";
-        lBody.appendChild(emp);
-      } else {
-        // gjenbruk matchRow-ish, men uten lang liste: bare én rad
-        lBody.appendChild(matchRow(teamObj, last));
-      }
-
-      lastBox.appendChild(lBody);
-      front.appendChild(lastBox);
-
-      card.appendChild(front);
+      pad.appendChild(fixture);
+      card.appendChild(pad);
       return card;
     }
 
-    function applyTeamMode(){
+    function applyMode(){
       const params = new URLSearchParams(location.search);
-      const team = (params.get("team") || "both").toLowerCase(); // a|b|both
       const view = (params.get("view") || "").toLowerCase();
 
       if (view === "front"){
         document.body.classList.add("front");
-      } else {
-        document.body.classList.remove("front");
+        return { view:"front", team:"a" }; // låst til A i front
       }
+      document.body.classList.remove("front");
 
-      const grid = document.getElementById("grid");
-      grid.className = "grid";
-      if (team === "a" || team === "b") grid.classList.add("single");
-
-      return { team, view };
+      const team = (params.get("team") || "both").toLowerCase(); // a|b|both
+      return { view:"", team };
     }
 
     function renderLoading(grid, mode){
       grid.innerHTML = "";
-
-      const mk = (title) => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <div class="card-head">
-            <div class="card-title"><span class="team-mark"></span><span>${esc(title)}</span></div>
-            <div class="badge">2026</div>
-          </div>
-          <div class="loading">Laster…</div>
-        `;
-        return card;
-      };
-
-      if (mode.team === "a"){
-        grid.appendChild(mk("A-Laget"));
-      } else if (mode.team === "b"){
-        grid.appendChild(mk("B-Laget"));
-      } else {
-        grid.appendChild(mk("A-Laget"));
-        grid.appendChild(mk("B-Laget"));
-      }
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `<div class="loading">Laster…</div>`;
+      grid.appendChild(card);
     }
 
-    function renderError(grid, mode, msg){
+    function renderError(grid, msg){
       grid.innerHTML = "";
       const card = document.createElement("div");
       card.className = "card";
-      card.innerHTML = `
-        <div class="card-head">
-          <div class="card-title"><span class="team-mark"></span><span>Kunne ikke hente data</span></div>
-          <div class="badge">2026</div>
-        </div>
-        <div class="error">${esc(msg || "Ukjent feil.")}</div>
-      `;
+      card.innerHTML = `<div class="error">${esc(msg || "Kunne ikke hente data.")}</div>`;
       grid.appendChild(card);
     }
 
@@ -1052,16 +950,13 @@
       const bObj = data?.b || null;
 
       if (mode.view === "front"){
-        if (mode.team === "a"){
-          grid.appendChild(makeFrontCard("a", aObj));
-        } else if (mode.team === "b"){
-          grid.appendChild(makeFrontCard("b", bObj));
-        } else {
-          grid.appendChild(makeFrontCard("a", aObj));
-          grid.appendChild(makeFrontCard("b", bObj));
-        }
+        grid.className = "grid single";
+        grid.appendChild(makeFrontAOnly(aObj));
         return;
       }
+
+      // Normal view
+      grid.className = "grid" + ((mode.team === "a" || mode.team === "b") ? " single" : "");
 
       if (mode.team === "a"){
         grid.appendChild(makeCard("a", aObj));
@@ -1075,7 +970,7 @@
 
     async function loadAndRender(){
       const grid = document.getElementById("grid");
-      const mode = applyTeamMode();
+      const mode = applyMode();
       renderLoading(grid, mode);
 
       const url = repoBaseUrl() + "data/matches.json?ts=" + Date.now();
@@ -1086,18 +981,17 @@
         const json = await res.json();
 
         if (!json || typeof json !== "object"){
-          renderError(grid, mode, "Dataformatet var uventet.");
+          renderError(grid, "Dataformatet var uventet.");
           return;
         }
 
         renderData(grid, mode, json);
       }catch(e){
-        renderError(grid, mode, "Feil ved lasting av matches.json:\n" + (e.message || String(e)));
+        renderError(grid, "Kunne ikke hente data.\n" + (e.message || String(e)));
       }
     }
 
     window.addEventListener("DOMContentLoaded", () => {
-      applyTeamMode();
       loadAndRender();
       setInterval(loadAndRender, 60 * 1000);
     });
