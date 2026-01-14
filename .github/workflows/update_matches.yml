@@ -1,12 +1,16 @@
-name: Update matches (JSON + ICS)
+name: Update matches (JSON + ICS + logos)
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # hver 5. min
-  workflow_dispatch: {}
+    - cron: "*/1 * * * *"   # every 5 minutes
+  workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:
+  group: update-matches
+  cancel-in-progress: true
 
 jobs:
   update:
@@ -18,31 +22,30 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      - name: Fetch matches + generate ICS
+      - name: Run scraper
         run: |
           python scripts/fetch_matches.py
 
-      - name: Commit & push if changed
+      - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add data/matches.json data/a.ics data/b.ics data/all.ics assets/logos || true
+          # Stage generated files + downloaded logos
+          git add data/matches.json data/a.ics data/b.ics data/all.ics assets/logos
 
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
+          # If no changes, do nothing
+          git diff --cached --quiet && exit 0
 
-          git commit -m "Update matches + ICS"
+          git commit -m "Update matches + ics + logos"
           git push
