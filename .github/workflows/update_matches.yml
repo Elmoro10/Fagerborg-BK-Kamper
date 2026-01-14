@@ -2,7 +2,7 @@ name: Update matches (JSON + ICS + logos)
 
 on:
   schedule:
-    - cron: "*/1 * * * *"   # every 5 minutes
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -41,10 +41,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Stage generated files + downloaded logos
           git add data/matches.json data/a.ics data/b.ics data/all.ics assets/logos
 
-          # If no changes, do nothing
           git diff --cached --quiet && exit 0
 
           git commit -m "Update matches + ics + logos"
