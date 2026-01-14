@@ -7,7 +7,6 @@
 
   <style>
     :root{
-      /* Match tabell-repoet */
       --bg:#f3f4f6;
       --card:#ffffff;
       --text:#0f172a;
@@ -21,7 +20,6 @@
       --our-bg: rgba(22,163,74,.12);
       --our-text: #16a34a;
 
-      /* Chips */
       --chip:#f3f4f6;
       --chipText:#374151;
       --chipOkBg: rgba(22,163,74,.12);
@@ -29,17 +27,14 @@
       --chipBadBg: rgba(220,38,38,.12);
       --chipBadText: #dc2626;
 
-      /* Tabs */
       --tabBg: #f3f4f6;
       --tabBorder: #e5e7eb;
       --tabActive: #ffffff;
 
-      /* Match list layout */
       --datew: 150px;
       --scorew: 70px;
 
-      /* Front */
-      --frontLogo: 76px;
+      --frontLogo: 84px;
     }
 
     *{ box-sizing:border-box; }
@@ -75,7 +70,6 @@
       min-width:0;
     }
 
-    /* Header (brukes ikke i front) */
     .card-head{
       display:flex;
       align-items:center;
@@ -85,6 +79,7 @@
       border-bottom:1px solid var(--line);
       background:var(--head);
     }
+
     .card-title{
       font-weight:900;
       font-size:18px;
@@ -94,6 +89,7 @@
       gap:10px;
       min-width:0;
     }
+
     .team-mark{
       width:10px;
       height:22px;
@@ -102,6 +98,7 @@
       box-shadow: inset 0 0 0 1px rgba(15,23,42,.06);
       flex:0 0 auto;
     }
+
     .badge{
       font-size:12px;
       color:var(--muted);
@@ -112,7 +109,7 @@
       white-space:nowrap;
     }
 
-    /* Tabs (ikke i front) */
+    /* Tabs (normal view) */
     .tabs{ padding:10px 12px 0; }
     .tab-wrap{
       display:flex;
@@ -140,7 +137,7 @@
       color: var(--text);
     }
 
-    /* Match list */
+    /* Match list (normal view) */
     .list{
       padding:10px 12px 12px;
       display:flex;
@@ -290,16 +287,13 @@
     }
 
     /* ============================================================
-       FRONT (view=front) – kun stor "Neste kamp" (A-laget)
-       Arsenal-ish: dato/tid venstre, turnering/sted høyre
+       FRONT (view=front) – Arsenal-ish, men Fagerborg-stil
+       Kun stor "Neste kamp" + én knapp nederst
        ============================================================ */
     body.front .wrap{ max-width: 680px; }
     body.front .grid{ grid-template-columns: 1fr !important; }
-    body.front .card{ overflow: hidden; }
 
-    .front-pad{
-      padding:12px;
-    }
+    .front-pad{ padding:12px; }
 
     .fixture{
       border:1px solid var(--line);
@@ -308,13 +302,12 @@
       overflow:hidden;
     }
 
-    /* "Neste kamp" overskrift */
     .fixture-top{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      padding:12px 12px 10px;
+      padding:14px 14px 12px;
       border-bottom:1px solid var(--line);
       background:#fff;
     }
@@ -335,27 +328,33 @@
       font-weight:900;
     }
 
-    /* Meta-linje som Arsenal: venstre/høyre */
     .fixture-meta{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      gap:12px;
-      padding:12px;
+      gap:14px;
+      padding:14px;
       border-bottom:1px solid var(--line);
       background:#fff;
     }
 
     .meta-left .day{
       font-weight:1000;
-      letter-spacing:.06em;
-      font-size:13px;
+      letter-spacing:.08em;
+      font-size:12px;
       color:var(--muted);
       text-transform:uppercase;
-      margin-bottom:4px;
+      margin-bottom:6px;
     }
     .meta-left .date{
-      font-weight:1000;
+      font-weight:1100;
+      font-size:18px;
+      letter-spacing:-.02em;
+      line-height:1.1;
+      margin-bottom:4px;
+    }
+    .meta-left .time{
+      font-weight:1100;
       font-size:18px;
       letter-spacing:-.02em;
       line-height:1.1;
@@ -363,21 +362,21 @@
 
     .meta-right{
       text-align:right;
-      min-width: 40%;
+      min-width: 42%;
     }
     .meta-right .comp{
       font-weight:1000;
-      font-size:13px;
+      font-size:12px;
       color:var(--muted);
       text-transform:uppercase;
-      letter-spacing:.06em;
-      margin-bottom:4px;
+      letter-spacing:.08em;
+      margin-bottom:6px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
     .meta-right .place{
-      font-weight:1000;
+      font-weight:1100;
       font-size:14px;
       letter-spacing:-.01em;
       white-space:nowrap;
@@ -385,26 +384,11 @@
       text-overflow:ellipsis;
     }
 
-    /* Kickoff-linje */
-    .fixture-kick{
-      padding:0 12px 12px;
-      color:var(--muted);
-      font-size:12px;
-      border-bottom:1px solid var(--line);
-      background:#fff;
-    }
-    .fixture-kick b{
-      color:var(--text);
-      font-weight:1000;
-      letter-spacing:.06em;
-    }
-
-    /* Logo/teams */
     .fixture-teams{
-      padding:16px 12px 10px;
+      padding:22px 14px 14px;
       display:grid;
-      grid-template-columns: 1fr 60px 1fr;
-      gap:10px;
+      grid-template-columns: 1fr 62px 1fr;
+      gap:12px;
       align-items:center;
       background:#fff;
     }
@@ -422,13 +406,14 @@
       border:1px solid var(--line);
       background:#fff;
       object-fit:contain;
+      display:block;
     }
     .biglogo.fallback{
       background:#e5e7eb;
       border:1px solid #d1d5db;
     }
     .ft .tname{
-      font-weight:1000;
+      font-weight:1100;
       letter-spacing:-.02em;
       text-align:center;
       white-space:nowrap;
@@ -439,16 +424,16 @@
     }
     .vmark{
       text-align:center;
-      font-weight:1000;
+      font-weight:1100;
       font-size:26px;
       color:var(--muted);
-      letter-spacing:.06em;
+      letter-spacing:.08em;
     }
 
-    /* CTA knapp nederst (kun denne) */
     .fixture-actions{
-      padding:12px;
+      padding:14px;
       background:#fff;
+      border-top:1px solid var(--line);
       display:flex;
       justify-content:center;
     }
@@ -462,7 +447,7 @@
       border:1px solid var(--line);
       background:#fff;
       color:var(--text);
-      font-weight:1000;
+      font-weight:1100;
       cursor:pointer;
       text-decoration:none;
       letter-spacing:-.01em;
@@ -471,11 +456,11 @@
     .fixture-btn:hover{ filter: brightness(.98); }
 
     @media (max-width: 420px){
-      :root{ --frontLogo: 66px; }
+      :root{ --frontLogo: 70px; }
       .fixture-teams{ grid-template-columns: 1fr 46px 1fr; }
       .vmark{ font-size:24px; }
       .fixture-top h2{ font-size:20px; }
-      .meta-left .date{ font-size:17px; }
+      .meta-left .date, .meta-left .time{ font-size:17px; }
     }
   </style>
 </head>
@@ -498,18 +483,12 @@
       return location.origin + root;
     }
 
-    function normalizeUrl(u){
+    function toAbsMaybe(u){
       const s = String(u || "").trim();
       if (!s) return "";
-      if (s.startsWith("//")) return "https:" + s;
       if (s.startsWith("http://")) return "https://" + s.slice("http://".length);
-      return s;
-    }
-
-    function toAbsMaybe(u){
-      const s = normalizeUrl(u);
-      if (!s) return "";
-      if (s.startsWith("http://") || s.startsWith("https://")) return s;
+      if (s.startsWith("//")) return "https:" + s;
+      if (s.startsWith("https://") || s.startsWith("http://")) return s;
       return repoBaseUrl() + s.replace(/^\//, "");
     }
 
@@ -551,7 +530,7 @@
       }
     }
 
-    function logoNode(url, cls){
+    function imgNode(url, cls){
       const abs = toAbsMaybe(url);
       if (!abs){
         const sp = document.createElement("span");
@@ -560,11 +539,11 @@
       }
       const img = document.createElement("img");
       img.className = cls;
-      img.loading = "lazy";
+      img.loading = "eager";
       img.alt = "";
       img.src = abs;
 
-      /* Hjelper ofte hvis host blokkerer referrer/hotlink */
+      // For lokale assets trengs ikke, men ufarlig:
       img.referrerPolicy = "no-referrer";
 
       img.onerror = () => {
@@ -615,7 +594,7 @@
       const home = document.createElement("div");
       home.className = "team";
       home.append(
-        logoNode(m.homeLogoUrl, "logo"),
+        imgNode(m.homeLogoUrl, "logo"),
         Object.assign(document.createElement("div"), { className:"name", title:String(m.homeTeam||""), textContent:String(m.homeTeam||"Ukjent") })
       );
 
@@ -627,7 +606,7 @@
       away.className = "team right";
       away.append(
         Object.assign(document.createElement("div"), { className:"name", title:String(m.awayTeam||""), textContent:String(m.awayTeam||"Ukjent") }),
-        logoNode(m.awayLogoUrl, "logo")
+        imgNode(m.awayLogoUrl, "logo")
       );
 
       versus.append(home, vs, away);
@@ -811,7 +790,6 @@
       const fixture = document.createElement("div");
       fixture.className = "fixture";
 
-      // Title row
       const top = document.createElement("div");
       top.className = "fixture-top";
       const h2 = document.createElement("h2");
@@ -822,7 +800,6 @@
       top.append(h2, pill);
       fixture.appendChild(top);
 
-      // Find next A-match (kun Fagerborg)
       const ms = Array.isArray(teamObj?.matches) ? teamObj.matches.slice() : [];
       const now = Date.now();
       const fbk = ms
@@ -837,7 +814,7 @@
 
       if (!next){
         const wrap = document.createElement("div");
-        wrap.style.padding = "12px";
+        wrap.style.padding = "14px";
         const emp = document.createElement("div");
         emp.className = "empty";
         emp.textContent = "Ingen kamp funnet.";
@@ -854,6 +831,7 @@
         left.innerHTML = `
           <div class="day">${esc(day)}</div>
           <div class="date">${esc(date)}</div>
+          <div class="time">${esc(time)}</div>
         `;
 
         const right = document.createElement("div");
@@ -866,18 +844,13 @@
         meta.append(left, right);
         fixture.appendChild(meta);
 
-        const kick = document.createElement("div");
-        kick.className = "fixture-kick";
-        kick.innerHTML = `<b>KICKOFF</b> – ${esc(time)}`;
-        fixture.appendChild(kick);
-
         const teams = document.createElement("div");
         teams.className = "fixture-teams";
 
         const home = document.createElement("div");
         home.className = "ft";
         home.append(
-          logoNode(next.homeLogoUrl, "biglogo"),
+          imgNode(next.homeLogoUrl, "biglogo"),
           Object.assign(document.createElement("div"), { className:"tname", title:String(next.homeTeam||""), textContent:String(next.homeTeam||"Ukjent") })
         );
 
@@ -888,15 +861,27 @@
         const away = document.createElement("div");
         away.className = "ft";
         away.append(
-          logoNode(next.awayLogoUrl, "biglogo"),
+          imgNode(next.awayLogoUrl, "biglogo"),
           Object.assign(document.createElement("div"), { className:"tname", title:String(next.awayTeam||""), textContent:String(next.awayTeam||"Ukjent") })
         );
 
         teams.append(home, v, away);
         fixture.appendChild(teams);
+
+        // Klikk på selve fixture åpner kamp (hvis finnes)
+        const u = safeUrl(next.matchUrl);
+        if (u){
+          fixture.style.cursor = "pointer";
+          fixture.title = "Åpne kamp på fotball.no";
+          fixture.addEventListener("click", (ev) => {
+            // la knappen fungere uten at click “bobbler” til fixture:
+            const a = ev.target && ev.target.closest ? ev.target.closest("a") : null;
+            if (a) return;
+            window.open(u, "_blank", "noopener");
+          });
+        }
       }
 
-      // Only button at bottom -> external terminliste
       const actions = document.createElement("div");
       actions.className = "fixture-actions";
       const btn = document.createElement("a");
@@ -919,15 +904,15 @@
 
       if (view === "front"){
         document.body.classList.add("front");
-        return { view:"front", team:"a" }; // låst til A i front
+        return { view:"front", team:"a" };
       }
       document.body.classList.remove("front");
 
-      const team = (params.get("team") || "both").toLowerCase(); // a|b|both
+      const team = (params.get("team") || "both").toLowerCase();
       return { view:"", team };
     }
 
-    function renderLoading(grid, mode){
+    function renderLoading(grid){
       grid.innerHTML = "";
       const card = document.createElement("div");
       card.className = "card";
@@ -955,7 +940,6 @@
         return;
       }
 
-      // Normal view
       grid.className = "grid" + ((mode.team === "a" || mode.team === "b") ? " single" : "");
 
       if (mode.team === "a"){
@@ -971,7 +955,7 @@
     async function loadAndRender(){
       const grid = document.getElementById("grid");
       const mode = applyMode();
-      renderLoading(grid, mode);
+      renderLoading(grid);
 
       const url = repoBaseUrl() + "data/matches.json?ts=" + Date.now();
 
