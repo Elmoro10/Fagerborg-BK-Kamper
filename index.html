@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Terminliste – Fagerborg BK (2026)</title>
+  <title>Terminliste – Fagerborg BK</title>
 
   <style>
     :root{
@@ -31,8 +31,8 @@
       --tabBorder: #e5e7eb;
       --tabActive: #ffffff;
 
-      --datew: 150px;
-      --scorew: 70px;
+      --datew: 160px;
+      --scorew: 74px;
 
       --frontLogo: 84px;
     }
@@ -107,9 +107,12 @@
       padding:6px 10px;
       border-radius:999px;
       white-space:nowrap;
+      max-width: 58%;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    /* Tabs (normal view) */
+    /* Tabs */
     .tabs{ padding:10px 12px 0; }
     .tab-wrap{
       display:flex;
@@ -137,7 +140,7 @@
       color: var(--text);
     }
 
-    /* Match list (normal view) */
+    /* Match list */
     .list{
       padding:10px 12px 12px;
       display:flex;
@@ -220,6 +223,7 @@
       background:#fff;
       object-fit:contain;
       flex:0 0 auto;
+      display:block;
     }
     .logo.fallback{
       background:#e5e7eb;
@@ -287,12 +291,10 @@
     }
 
     /* ============================================================
-       FRONT (view=front) – Arsenal-ish, men Fagerborg-stil
-       Kun stor "Neste kamp" + én knapp nederst
+       FRONT (view=front) – stor “Neste kamp” (A-lag), én knapp
        ============================================================ */
     body.front .wrap{ max-width: 680px; }
     body.front .grid{ grid-template-columns: 1fr !important; }
-
     .front-pad{ padding:12px; }
 
     .fixture{
@@ -313,7 +315,7 @@
     }
     .fixture-top h2{
       margin:0;
-      font-size:22px;
+      font-size:24px;
       font-weight:1000;
       letter-spacing:-.02em;
     }
@@ -459,7 +461,7 @@
       :root{ --frontLogo: 70px; }
       .fixture-teams{ grid-template-columns: 1fr 46px 1fr; }
       .vmark{ font-size:24px; }
-      .fixture-top h2{ font-size:20px; }
+      .fixture-top h2{ font-size:22px; }
       .meta-left .date, .meta-left .time{ font-size:17px; }
     }
   </style>
@@ -518,7 +520,8 @@
       const tn = String(teamObj?.teamName || "Fagerborg").toLowerCase();
       const home = String(m.homeTeam || "").toLowerCase();
       const away = String(m.awayTeam || "").toLowerCase();
-      return home.includes(tn) || away.includes(tn);
+      // Match både "Fagerborg" og "Fagerborg 2" etc.
+      return home.includes(tn) || away.includes(tn) || home.includes("fagerborg") || away.includes("fagerborg");
     }
 
     function safeUrl(u){
@@ -539,13 +542,9 @@
       }
       const img = document.createElement("img");
       img.className = cls;
-      img.loading = "eager";
+      img.loading = "lazy";
       img.alt = "";
       img.src = abs;
-
-      // For lokale assets trengs ikke, men ufarlig:
-      img.referrerPolicy = "no-referrer";
-
       img.onerror = () => {
         const sp = document.createElement("span");
         sp.className = cls + " fallback";
@@ -655,7 +654,7 @@
         const x = ms.filter(m => {
           const t = parseKickoffMs(m);
           if (!Number.isFinite(t)) return false;
-          if (!isFbk(m)) return false;
+          if (!isFbk(m)) return false;                 // ✅ kun Fagerborg-kamper
           return t >= now && String(m.status || "").toUpperCase() !== "CANCELLED";
         });
         x.sort((a,b) => getT(a) - getT(b));
@@ -666,20 +665,21 @@
         const x = ms.filter(m => {
           const t = parseKickoffMs(m);
           if (!Number.isFinite(t)) return false;
-          if (!isFbk(m)) return false;
+          if (!isFbk(m)) return false;                 // ✅ kun Fagerborg-kamper
           return t < now;
         });
         x.sort((a,b) => getT(b) - getT(a));
         return x;
       }
 
+      // ✅ Alle lag = absolutt alt for liga/avdeling
       ms.sort((a,b) => getT(a) - getT(b));
       return ms;
     }
 
-    function makeCard(teamKey, teamObj){
+    function makeCard(teamKey, teamObj, fallbackBadge){
       const title = teamKey === "a" ? "A-Laget" : "B-Laget";
-      const badgeText = String(teamObj?.tournament || "2026");
+      const badgeText = String(teamObj?.tournament || fallbackBadge || "2026");
 
       const card = document.createElement("div");
       card.className = "card";
@@ -776,7 +776,6 @@
 
       const tournament = String(m.tournament || fallbackTournament || "").trim();
       const venue = String(m.venue || "").trim();
-
       return { day, date, time, tournament, venue };
     }
 
@@ -802,6 +801,7 @@
 
       const ms = Array.isArray(teamObj?.matches) ? teamObj.matches.slice() : [];
       const now = Date.now();
+
       const fbk = ms
         .map(m => ({ m, t: parseKickoffMs(m) }))
         .filter(x => Number.isFinite(x.t))
@@ -867,19 +867,6 @@
 
         teams.append(home, v, away);
         fixture.appendChild(teams);
-
-        // Klikk på selve fixture åpner kamp (hvis finnes)
-        const u = safeUrl(next.matchUrl);
-        if (u){
-          fixture.style.cursor = "pointer";
-          fixture.title = "Åpne kamp på fotball.no";
-          fixture.addEventListener("click", (ev) => {
-            // la knappen fungere uten at click “bobbler” til fixture:
-            const a = ev.target && ev.target.closest ? ev.target.closest("a") : null;
-            if (a) return;
-            window.open(u, "_blank", "noopener");
-          });
-        }
       }
 
       const actions = document.createElement("div");
@@ -904,11 +891,11 @@
 
       if (view === "front"){
         document.body.classList.add("front");
-        return { view:"front", team:"a" };
+        return { view:"front", team:"a" }; // låst til A i front
       }
       document.body.classList.remove("front");
 
-      const team = (params.get("team") || "both").toLowerCase();
+      const team = (params.get("team") || "both").toLowerCase(); // a|b|both
       return { view:"", team };
     }
 
@@ -940,15 +927,16 @@
         return;
       }
 
-      grid.className = "grid" + ((mode.team === "a" || mode.team === "b") ? " single" : "");
-
       if (mode.team === "a"){
-        grid.appendChild(makeCard("a", aObj));
+        grid.className = "grid single";
+        grid.appendChild(makeCard("a", aObj, "5. divisjon (2026)"));
       } else if (mode.team === "b"){
-        grid.appendChild(makeCard("b", bObj));
+        grid.className = "grid single";
+        grid.appendChild(makeCard("b", bObj, "7. divisjon (2026)"));
       } else {
-        grid.appendChild(makeCard("a", aObj));
-        grid.appendChild(makeCard("b", bObj));
+        grid.className = "grid";
+        grid.appendChild(makeCard("a", aObj, "5. divisjon (2026)"));
+        grid.appendChild(makeCard("b", bObj, "7. divisjon (2026)"));
       }
     }
 
